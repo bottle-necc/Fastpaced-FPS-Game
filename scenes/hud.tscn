@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx0jp7l1mjrjr"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_haqyf"]
+
+[node name="HUD" type="Node"]
+script = ExtResource("1_haqyf")
+
+[node name="Pause Screen" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="Pause Screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -124.0
+offset_top = -27.5
+offset_right = 124.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+
+[node name="Options" type="Button" parent="Pause Screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -27.5
+offset_right = 124.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="Quit Game" type="Button" parent="Pause Screen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_left = -124.0
+offset_top = -27.5
+offset_right = 124.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit Game
+"
+
+[connection signal="pressed" from="Pause Screen/Resume" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Pause Screen/Quit Game" to="." method="_on_quit_game_pressed"]

@@ -1,0 +1,219 @@
+[gd_scene load_steps=21 format=3 uid="uid://c34mnkfi2v3cn"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jjlro"]
+[ext_resource type="PackedScene" uid="uid://ckibqhxqt8ish" path="res://scenes/rifle.tscn" id="2_5yvic"]
+[ext_resource type="Texture2D" uid="uid://c74yeetbg6d2r" path="res://assets/images/crosshair.png" id="3_qjxxd"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckBack.gd" id="4_y4t68"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckRight.gd" id="5_mnfpe"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckRU.gd" id="6_blpek"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckRD.gd" id="7_lklwc"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckRUU.gd" id="7_r1cw8"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckRUD.gd" id="8_0ter8"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLeft.gd" id="8_8ofk6"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckRDU.gd" id="8_nx7an"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLU.gd" id="9_lvvnl"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckRDD.gd" id="9_y6wpo"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLD.gd" id="10_4iyw0"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLUU.gd" id="14_mjad1"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLDU.gd" id="15_ctpdw"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLUD.gd" id="15_ugk35"]
+[ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLDD.gd" id="16_lm711"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ibeww"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_us4qs"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_jjlro")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ibeww")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_us4qs")
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+fov = 90.0
+
+[node name="AssaultRifle" parent="Neck/Camera3D" instance=ExtResource("2_5yvic")]
+transform = Transform3D(0.5, 0, 0, 0, 0.499524, -0.0218097, 0, 0.0218097, 0.499524, 0, 0, 0)
+
+[node name="CheckBack" type="RayCast3D" parent="Neck"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -25, 1, -4.37114e-08, 8.83441e-20, -4.37114e-08, -1, -1.09278e-06, 0, -0.5, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("4_y4t68")
+
+[node name="CheckRight" type="RayCast3D" parent="Neck"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 25, 0, -0.5, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("5_mnfpe")
+
+[node name="CheckRU" type="RayCast3D" parent="Neck/CheckRight"]
+transform = Transform3D(1, -1.28028e-08, -7.72715e-07, -1.28028e-08, 0.707106, -17.6777, 1.23634e-09, 0.0282843, 0.707106, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("6_blpek")
+
+[node name="CheckRUU" type="RayCast3D" parent="Neck/CheckRight/CheckRU"]
+transform = Transform3D(1, -3.32733e-09, -4.1819e-07, -3.32731e-09, 0.92388, -9.56706, 6.69105e-10, 0.0153073, 0.92388, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("7_r1cw8")
+
+[node name="CheckRUD" type="RayCast3D" parent="Neck/CheckRight/CheckRU"]
+transform = Transform3D(1, -3.32733e-09, 4.18191e-07, -3.32735e-09, 0.923879, 9.56711, -6.69105e-10, -0.0153074, 0.923879, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("8_0ter8")
+
+[node name="CheckRD" type="RayCast3D" parent="Neck/CheckRight"]
+transform = Transform3D(1, -1.28028e-08, 7.72715e-07, -1.28028e-08, 0.707106, 17.6777, -1.23634e-09, -0.0282843, 0.707106, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("7_lklwc")
+
+[node name="CheckRDU" type="RayCast3D" parent="Neck/CheckRight/CheckRD"]
+transform = Transform3D(1, -3.32733e-09, -4.18191e-07, -3.32735e-09, 0.923879, -9.56711, 6.69105e-10, 0.0153074, 0.923879, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("8_nx7an")
+
+[node name="CheckRDD" type="RayCast3D" parent="Neck/CheckRight/CheckRD"]
+transform = Transform3D(1, -3.32733e-09, 4.18191e-07, -3.32731e-09, 0.92388, 9.56706, -6.69105e-10, -0.0153073, 0.92388, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("9_y6wpo")
+
+[node name="CheckLeft" type="RayCast3D" parent="Neck"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 25, 0, -0.5, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("8_8ofk6")
+
+[node name="CheckLU" type="RayCast3D" parent="Neck/CheckLeft"]
+transform = Transform3D(1, 1.28028e-08, 7.72716e-07, 1.28028e-08, 0.707107, -17.6777, -1.23635e-09, 0.0282843, 0.707107, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("9_lvvnl")
+
+[node name="CheckLUU" type="RayCast3D" parent="Neck/CheckLeft/CheckLU"]
+transform = Transform3D(-1, 8.40954e-08, 4.18191e-07, -8.40954e-08, -0.92388, -9.56708, -6.69105e-10, -0.0153073, 0.923879, 0, 0, 0)
+target_position = Vector3(0, 0.55, 0)
+collide_with_areas = true
+script = ExtResource("14_mjad1")
+
+[node name="CheckLUD" type="RayCast3D" parent="Neck/CheckLeft/CheckLU"]
+transform = Transform3D(-1, 8.40954e-08, -4.18191e-07, -8.40954e-08, -0.92388, 9.56708, 6.69104e-10, 0.0153073, 0.923879, 0, 0, 0)
+target_position = Vector3(0, 0.55, 0)
+collide_with_areas = true
+script = ExtResource("15_ugk35")
+
+[node name="CheckLD" type="RayCast3D" parent="Neck/CheckLeft"]
+transform = Transform3D(1, 1.28028e-08, -7.72716e-07, 1.28028e-08, 0.707107, 17.6777, 1.23635e-09, -0.0282843, 0.707107, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("10_4iyw0")
+
+[node name="CheckLDU" type="RayCast3D" parent="Neck/CheckLeft/CheckLD"]
+transform = Transform3D(-1, 8.40954e-08, 4.18191e-07, -8.40954e-08, -0.92388, -9.56708, -6.69104e-10, -0.0153073, 0.923879, 0, 0, 0)
+target_position = Vector3(0, 0.55, 0)
+collide_with_areas = true
+script = ExtResource("15_ctpdw")
+
+[node name="CheckLDD" type="RayCast3D" parent="Neck/CheckLeft/CheckLD"]
+transform = Transform3D(-1, 8.40954e-08, -4.18191e-07, -8.40954e-08, -0.92388, 9.56708, 6.69105e-10, 0.0153073, 0.923879, 0, 0, 0)
+target_position = Vector3(0, 0.55, 0)
+collide_with_areas = true
+script = ExtResource("16_lm711")
+
+[node name="Reload" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="WallrunTimer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="HUD" type="Node" parent="."]
+
+[node name="Crosshair" type="TextureRect" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qjxxd")
+
+[node name="AmmoCounter" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_left = 0.99
+anchor_top = 1.0
+anchor_right = 0.99
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = -79.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "test"
+horizontal_alignment = 2
+
+[node name="Reloading" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_left = 0.99
+anchor_top = 0.93
+anchor_right = 0.99
+anchor_bottom = 0.93
+offset_left = -136.0
+offset_top = -37.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 2
+
+[connection signal="hit" from="Neck/CheckBack" to="." method="_on_check_back_hit"]
+[connection signal="no_hit" from="Neck/CheckBack" to="." method="_on_check_back_no_hit"]
+[connection signal="hit" from="Neck/CheckRight" to="." method="_on_check_right_hit"]
+[connection signal="no_hit" from="Neck/CheckRight" to="." method="_on_check_right_no_hit"]
+[connection signal="hit" from="Neck/CheckRight/CheckRU" to="Neck/CheckRight" method="_on_check_ru_hit"]
+[connection signal="no_hit" from="Neck/CheckRight/CheckRU" to="Neck/CheckRight" method="_on_check_ru_no_hit"]
+[connection signal="hit" from="Neck/CheckRight/CheckRU/CheckRUU" to="Neck/CheckRight/CheckRU" method="_on_check_ruu_hit"]
+[connection signal="no_hit" from="Neck/CheckRight/CheckRU/CheckRUU" to="Neck/CheckRight/CheckRU" method="_on_check_ruu_no_hit"]
+[connection signal="hit" from="Neck/CheckRight/CheckRU/CheckRUD" to="Neck/CheckRight/CheckRU" method="_on_check_rud_hit"]
+[connection signal="no_hit" from="Neck/CheckRight/CheckRU/CheckRUD" to="Neck/CheckRight/CheckRU" method="_on_check_rud_no_hit"]
+[connection signal="hit" from="Neck/CheckRight/CheckRD" to="Neck/CheckRight" method="_on_check_rd_hit"]
+[connection signal="no_hit" from="Neck/CheckRight/CheckRD" to="Neck/CheckRight" method="_on_check_rd_no_hit"]
+[connection signal="hit" from="Neck/CheckRight/CheckRD/CheckRDU" to="Neck/CheckRight/CheckRD" method="_on_check_rdu_hit"]
+[connection signal="no_hit" from="Neck/CheckRight/CheckRD/CheckRDU" to="Neck/CheckRight/CheckRD" method="_on_check_rdu_no_hit"]
+[connection signal="hit" from="Neck/CheckRight/CheckRD/CheckRDD" to="Neck/CheckRight/CheckRD" method="_on_check_rdd_hit"]
+[connection signal="no_hit" from="Neck/CheckRight/CheckRD/CheckRDD" to="Neck/CheckRight/CheckRD" method="_on_check_rdd_no_hit"]
+[connection signal="hit" from="Neck/CheckLeft" to="." method="_on_check_left_hit"]
+[connection signal="no_hit" from="Neck/CheckLeft" to="." method="_on_check_left_no_hit"]
+[connection signal="hit" from="Neck/CheckLeft/CheckLU" to="Neck/CheckLeft" method="_on_check_lu_hit"]
+[connection signal="no_hit" from="Neck/CheckLeft/CheckLU" to="Neck/CheckLeft" method="_on_check_lu_no_hit"]
+[connection signal="hit" from="Neck/CheckLeft/CheckLU/CheckLUU" to="Neck/CheckLeft/CheckLU" method="_on_check_luu_hit"]
+[connection signal="no_hit" from="Neck/CheckLeft/CheckLU/CheckLUU" to="Neck/CheckLeft/CheckLU" method="_on_check_luu_no_hit"]
+[connection signal="hit" from="Neck/CheckLeft/CheckLU/CheckLUD" to="Neck/CheckLeft/CheckLU" method="_on_check_lud_hit"]
+[connection signal="no_hit" from="Neck/CheckLeft/CheckLU/CheckLUD" to="Neck/CheckLeft/CheckLU" method="_on_check_lud_no_hit"]
+[connection signal="hit" from="Neck/CheckLeft/CheckLD" to="Neck/CheckLeft" method="_on_check_ld_hit"]
+[connection signal="no_hit" from="Neck/CheckLeft/CheckLD" to="Neck/CheckLeft" method="_on_check_ld_no_hit"]
+[connection signal="hit" from="Neck/CheckLeft/CheckLD/CheckLDU" to="Neck/CheckLeft/CheckLD" method="_on_check_ldu_hit"]
+[connection signal="no_hit" from="Neck/CheckLeft/CheckLD/CheckLDU" to="Neck/CheckLeft/CheckLD" method="_on_check_ldu_no_hit"]
+[connection signal="hit" from="Neck/CheckLeft/CheckLD/CheckLDD" to="Neck/CheckLeft/CheckLD" method="_on_check_ldd_hit"]
+[connection signal="no_hit" from="Neck/CheckLeft/CheckLD/CheckLDD" to="Neck/CheckLeft/CheckLD" method="_on_check_ldd_no_hit"]
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
+[connection signal="timeout" from="WallrunTimer" to="." method="_on_wallrun_timer_timeout"]

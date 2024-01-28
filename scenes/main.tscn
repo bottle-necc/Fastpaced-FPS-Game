@@ -1,0 +1,152 @@
+[gd_scene load_steps=19 format=3 uid="uid://cjkp5mlsj4a3y"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_y0vc5"]
+[ext_resource type="PackedScene" uid="uid://c34mnkfi2v3cn" path="res://scenes/player.tscn" id="2_bg6es"]
+[ext_resource type="PackedScene" uid="uid://dha45n3hc08fp" path="res://scenes/target.tscn" id="3_012ht"]
+[ext_resource type="PackedScene" uid="uid://cx0jp7l1mjrjr" path="res://scenes/hud.tscn" id="4_rwtbb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_42dvq"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_6t4p1"]
+sky_material = SubResource("ProceduralSkyMaterial_42dvq")
+
+[sub_resource type="Environment" id="Environment_p3ml7"]
+background_mode = 2
+sky = SubResource("Sky_6t4p1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_goowk"]
+size = Vector3(150, 1, 150)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l41jt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eb8pm"]
+material = SubResource("StandardMaterial3D_l41jt")
+size = Vector3(150, 1, 150)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_twrlm"]
+size = Vector3(50, 25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1gq5j"]
+size = Vector3(50, 25, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3cu8"]
+size = Vector3(25, 25, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_18uvx"]
+size = Vector3(25, 25, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k8axf"]
+size = Vector3(50, 25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7dhmq"]
+size = Vector3(50, 25, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6mes"]
+size = Vector3(25, 25, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r14nm"]
+size = Vector3(25, 25, 0.5)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_y0vc5")
+enemy = ExtResource("3_012ht")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p3ml7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_goowk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_eb8pm")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 14.9248)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("BoxShape3D_twrlm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+mesh = SubResource("BoxMesh_1gq5j")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 22.8296)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+shape = SubResource("BoxShape3D_x3cu8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+mesh = SubResource("BoxMesh_18uvx")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 36.452, 12, 13.9421)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+shape = SubResource("BoxShape3D_k8axf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+mesh = SubResource("BoxMesh_7dhmq")
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -12, 12, 11.447)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+shape = SubResource("BoxShape3D_v6mes")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_r14nm")
+
+[node name="Player" parent="." instance=ExtResource("2_bg6es")]
+
+[node name="Target" parent="." instance=ExtResource("3_012ht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15)
+
+[node name="old_HUD" type="Node" parent="."]
+
+[node name="SensitivitySlider" type="Node" parent="old_HUD"]
+
+[node name="Label" type="Label" parent="old_HUD/SensitivitySlider"]
+offset_left = 157.0
+offset_top = 21.0
+offset_right = 285.0
+offset_bottom = 47.0
+text = "Sensitivity Slider
+"
+
+[node name="HSlider" type="HSlider" parent="old_HUD/SensitivitySlider"]
+offset_left = 156.0
+offset_top = 49.0
+offset_right = 506.0
+offset_bottom = 65.0
+min_value = 1.0
+max_value = 125.0
+value = 25.0
+
+[node name="SpawnEnemy" type="Button" parent="old_HUD"]
+offset_left = 533.0
+offset_top = 19.0
+offset_right = 664.0
+offset_bottom = 69.0
+text = "Spawn Enemy"
+
+[node name="HUD" parent="." instance=ExtResource("4_rwtbb")]
+
+[connection signal="paused" from="Player" to="HUD" method="_on_player_paused"]
+[connection signal="resumed" from="Player" to="HUD" method="_on_player_resumed"]
+[connection signal="value_changed" from="old_HUD/SensitivitySlider/HSlider" to="Player" method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="old_HUD/SpawnEnemy" to="." method="_on_spawn_enemy_pressed"]
+[connection signal="unpause" from="HUD" to="Player" method="_on_hud_unpause"]

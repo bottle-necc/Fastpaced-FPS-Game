@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://c34mnkfi2v3cn"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jjlro"]
+[ext_resource type="PackedScene" uid="uid://ckibqhxqt8ish" path="res://scenes/rifle.tscn" id="2_5yvic"]
+[ext_resource type="Texture2D" uid="uid://c74yeetbg6d2r" path="res://assets/images/crosshair.png" id="3_qjxxd"]
+[ext_resource type="Script" path="res://scripts/CheckRight.gd" id="4_oykfq"]
+[ext_resource type="Script" path="res://scripts/CheckLeft.gd" id="5_23mvb"]
+[ext_resource type="Script" path="res://scenes/CheckRU.gd" id="5_ffvei"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ibeww"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_us4qs"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_jjlro")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ibeww")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_us4qs")
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+fov = 90.0
+
+[node name="AssaultRifle" parent="Neck/Camera3D" instance=ExtResource("2_5yvic")]
+transform = Transform3D(0.5, 0, 0, 0, 0.499524, -0.0218097, 0, 0.0218097, 0.499524, 0, 0, 0)
+
+[node name="HUD" type="Node" parent="Neck/Camera3D"]
+
+[node name="Crosshair" type="TextureRect" parent="Neck/Camera3D/HUD"]
+offset_left = 940.0
+offset_top = 520.0
+offset_right = 980.0
+offset_bottom = 560.0
+texture = ExtResource("3_qjxxd")
+
+[node name="AmmoCounter" type="Label" parent="Neck/Camera3D/HUD"]
+offset_left = 1730.0
+offset_top = 994.0
+offset_right = 1901.0
+offset_bottom = 1073.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 2
+
+[node name="Reloading" type="Label" parent="Neck/Camera3D/HUD"]
+offset_left = 1767.0
+offset_top = 955.0
+offset_right = 1903.0
+offset_bottom = 992.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 2
+
+[node name="CheckRight" type="RayCast3D" parent="Neck"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 35, 0, -0.5, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("4_oykfq")
+
+[node name="CheckRU" type="RayCast3D" parent="Neck/CheckRight"]
+transform = Transform3D(1, -1.28028e-08, -1.0818e-06, -1.28028e-08, 0.707107, -24.7487, 8.83103e-10, 0.0202031, 0.707107, 0, 0, 0)
+target_position = Vector3(0, -0.55, 0)
+script = ExtResource("5_ffvei")
+
+[node name="CheckLeft" type="RayCast3D" parent="Neck"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 35, 0, -0.5, 0)
+target_position = Vector3(0, -0.55, 0)
+collide_with_areas = true
+script = ExtResource("5_23mvb")
+
+[node name="Reload" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="hit" from="Neck/CheckRight" to="." method="_on_check_right_hit"]
+[connection signal="no_hit" from="Neck/CheckRight" to="." method="_on_check_right_no_hit"]
+[connection signal="hit" from="Neck/CheckLeft" to="." method="_on_check_left_hit"]
+[connection signal="no_hit" from="Neck/CheckLeft" to="." method="_on_check_left_no_hit"]
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
