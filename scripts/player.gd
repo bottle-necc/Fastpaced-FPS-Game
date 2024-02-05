@@ -24,6 +24,7 @@ var wall_normal
 var same_wall = false
 var old_wall_normal
 var wall_normal_values
+var is_ads = false
 
 # Creates a new bullet scene on call.
 var bullet = load("res://scenes/bullet.tscn")
@@ -146,15 +147,15 @@ func _physics_process(delta):
 		gun.position.y = -0.225
 		gun.position.z = -0.45
 		gun.rotation.y = 0
-		crosshair.visible = false
 		camera.fov = 70
+		is_ads = true
 	else:
 		gun.position.x = 0.25
 		gun.position.y = -0.3
 		gun.position.z = -0.6
 		gun.rotation.y = deg_to_rad(0.5)
 		camera.fov = 90
-		crosshair.visible = true
+		is_ads = false
 
 	move_and_slide()
 	wall_run()
@@ -322,7 +323,14 @@ func HUD():
 
 	# Updates the ammo counter.
 	ammo_counter.text = "%s/30" % ammo
+	if is_mouse_captured and !is_ads:
+		crosshair.visible = true
+	else:
+		crosshair.visible = false
 
 func _on_hud_unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	is_mouse_captured = true
+
+func _on_hud_pause():
+	pass
