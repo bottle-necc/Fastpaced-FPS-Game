@@ -331,6 +331,3 @@ func HUD():
 func _on_hud_unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	is_mouse_captured = true
-
-func _on_hud_pause():
-	pass

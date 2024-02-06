@@ -4,6 +4,14 @@
 
 [node name="HUD" type="Node"]
 script = ExtResource("1_haqyf")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Background" type="Panel" parent="."]
+offset_left = 426.0
+offset_top = 174.0
+offset_right = 466.0
+offset_bottom = 214.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Pause Screen" type="Panel" parent="."]
 anchors_preset = 8
@@ -64,5 +72,10 @@ grow_vertical = 2
 text = "Quit Game
 "
 
+[node name="Options Screen" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="Pause Screen/Resume" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Pause Screen/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Pause Screen/Quit Game" to="." method="_on_quit_game_pressed"]
