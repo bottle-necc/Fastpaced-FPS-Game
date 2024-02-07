@@ -18,7 +18,7 @@ func _process(delta):
 	background.global_position.y = 0
 	background.size.x = get_window().size.x
 	background.size.y = get_window().size.y
-	
+
 	if is_paused:
 		background.show()
 	else:
@@ -43,3 +43,8 @@ func _on_quit_game_pressed():
 
 func _on_options_pressed():
 	options_screen.show()
+	pause_screen.hide()
+
+func _on_return_pressed():
+	options_screen.hide()
+	pause_screen.show()
