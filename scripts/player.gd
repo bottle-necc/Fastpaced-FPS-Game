@@ -40,14 +40,12 @@ var instance
 @onready var reloading_icon = $HUD/Reloading
 
 signal paused
-signal resumed
 
 # Handles mouse focus.
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		is_mouse_captured = true
-		resumed.emit()
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		is_mouse_captured = false

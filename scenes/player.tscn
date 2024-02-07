@@ -187,7 +187,6 @@ theme_override_font_sizes/font_size = 24
 vertical_alignment = 2
 
 [connection signal="paused" from="." to="HUD" method="_on_player_paused"]
-[connection signal="resumed" from="." to="HUD" method="_on_player_resumed"]
 [connection signal="hit" from="Neck/CheckBack" to="." method="_on_check_back_hit"]
 [connection signal="no_hit" from="Neck/CheckBack" to="." method="_on_check_back_no_hit"]
 [connection signal="hit" from="Neck/CheckRight" to="." method="_on_check_right_hit"]

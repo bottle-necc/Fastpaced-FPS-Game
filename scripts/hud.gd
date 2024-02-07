@@ -25,15 +25,11 @@ func _process(delta):
 		background.hide()
 
 func _on_player_paused():
-	pause_screen.show()
-	is_paused = true
+	if !is_paused:
+		pause_screen.show()
+		is_paused = true
 
 func _on_button_pressed():
-	pause_screen.hide()
-	unpause.emit()
-	is_paused = false
-
-func _on_player_resumed():
 	pause_screen.hide()
 	unpause.emit()
 	is_paused = false
