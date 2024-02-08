@@ -38,6 +38,7 @@ var instance
 @onready var gun_barrel = $Neck/Camera3D/AssaultRifle/RayCast3D
 @onready var ammo_counter = $HUD/AmmoCounter
 @onready var reloading_icon = $HUD/Reloading
+@onready var sens_slider = $"HUD/Options Screen/Controls/Sensitivity"
 
 signal paused
 
@@ -318,7 +319,6 @@ func _on_wallrun_timer_timeout():
 	wallrun_timeout = true
 
 func HUD():
-
 	# Updates the ammo counter.
 	ammo_counter.text = "%s/30" % ammo
 	if is_mouse_captured and !is_ads:

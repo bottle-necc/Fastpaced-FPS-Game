@@ -126,15 +126,6 @@ offset_bottom = 47.0
 text = "Sensitivity Slider
 "
 
-[node name="HSlider" type="HSlider" parent="old_HUD/SensitivitySlider"]
-offset_left = 156.0
-offset_top = 49.0
-offset_right = 506.0
-offset_bottom = 65.0
-min_value = 1.0
-max_value = 125.0
-value = 25.0
-
 [node name="SpawnEnemy" type="Button" parent="old_HUD"]
 offset_left = 533.0
 offset_top = 19.0
@@ -142,5 +133,4 @@ offset_right = 664.0
 offset_bottom = 69.0
 text = "Spawn Enemy"
 
-[connection signal="value_changed" from="old_HUD/SensitivitySlider/HSlider" to="Player" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="old_HUD/SpawnEnemy" to="." method="_on_spawn_enemy_pressed"]
