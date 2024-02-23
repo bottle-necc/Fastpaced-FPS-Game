@@ -16,6 +16,8 @@ func _ready():
 	options_screen.hide()
 	unpause.emit()
 
+	# make a json file in user://, ask Phind how to do it.
+
 	# THIS IS TEMPORARY. The purpose of this is because the options menu doesn't currently have a default tab to show.
 	child_list = audio.get_children()
 
@@ -66,3 +68,6 @@ func _on_controls_pressed():
 	# Shows all of the children of the current tab once the new array has been assigned to child_list.
 	for i in child_list:
 		i.show()
+
+func _on_sensitivity_value_changed(value):
+	pass

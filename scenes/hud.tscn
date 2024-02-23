@@ -185,3 +185,4 @@ text = "Key Mapping
 [connection signal="pressed" from="Pause Screen/Quit Game" to="." method="_on_quit_game_pressed"]
 [connection signal="pressed" from="Options Screen/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Options Screen/Controls" to="." method="_on_controls_pressed"]
+[connection signal="value_changed" from="Options Screen/Controls/Sensitivity" to="." method="_on_sensitivity_value_changed"]
