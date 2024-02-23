@@ -162,6 +162,7 @@ text = "Controls
 "
 
 [node name="Sensitivity" type="HSlider" parent="Options Screen/Controls"]
+layout_mode = 0
 offset_left = 156.0
 offset_top = 49.0
 offset_right = 506.0
