@@ -70,4 +70,6 @@ func _on_controls_pressed():
 		i.show()
 
 func _on_sensitivity_value_changed(value):
-	pass
+	
+	var f = FileAccess.open("user://settings.json", FileAccess.READ)
+	
