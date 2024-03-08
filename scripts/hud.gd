@@ -10,13 +10,15 @@ var child_list
 @onready var background = $Background
 @onready var controls = $"Options Screen/Controls"
 @onready var audio = $"Options Screen/Audio"
+@onready var sensitivity = $"Options Screen/Controls/Sensitivity"
 
 func _ready():
 	pause_screen.hide()
 	options_screen.hide()
 	unpause.emit()
 
-	# make a json file in user://, ask Phind how to do it.
+	var settings = SettingsManager.settings_dict
+	sensitivity.value = settings["controls"]["sensitivity"] * 10000
 
 	# THIS IS TEMPORARY. The purpose of this is because the options menu doesn't currently have a default tab to show.
 	child_list = audio.get_children()
@@ -70,7 +72,6 @@ func _on_controls_pressed():
 		i.show()
 
 func _on_sensitivity_value_changed(value):
-	SettingsManager.load_settings()
 	var settings = SettingsManager.settings_dict
 	settings["controls"]["sensitivity"] = value * 0.0001
 	SettingsManager.save_settings()

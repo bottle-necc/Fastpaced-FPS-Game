@@ -34,11 +34,6 @@ func load_settings():
 	return settings_dict
 
 func save_settings():
-	
-	# Open the json file in write form
-	# Override it with the current settings_dict
-	# update settings_dict juuust in case
-	
 	var f = FileAccess.open("user://settings.json", FileAccess.WRITE)
 	f.store_string(JSON.stringify(settings_dict))
 	f.close

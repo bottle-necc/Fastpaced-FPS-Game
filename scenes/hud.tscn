@@ -162,14 +162,22 @@ text = "Controls
 "
 
 [node name="Sensitivity" type="HSlider" parent="Options Screen/Controls"]
-layout_mode = 0
 offset_left = 156.0
-offset_top = 49.0
+offset_top = -267.0
 offset_right = 506.0
-offset_bottom = 65.0
+offset_bottom = -251.0
 min_value = 1.0
 max_value = 125.0
 value = 1.0
+
+[node name="Label" type="Label" parent="Options Screen/Controls/Sensitivity"]
+layout_direction = 2
+layout_mode = 1
+offset_left = 1.0
+offset_top = -30.0
+offset_right = 81.0
+offset_bottom = -4.0
+text = "Sensitivity"
 
 [node name="Key Mapping" type="Button" parent="Options Screen"]
 layout_mode = 0

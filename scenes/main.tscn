@@ -116,21 +116,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -15)
 
 [node name="old_HUD" type="Node" parent="."]
 
-[node name="SensitivitySlider" type="Node" parent="old_HUD"]
-
-[node name="Label" type="Label" parent="old_HUD/SensitivitySlider"]
-offset_left = 157.0
-offset_top = 21.0
-offset_right = 285.0
-offset_bottom = 47.0
-text = "Sensitivity Slider
-"
-
 [node name="SpawnEnemy" type="Button" parent="old_HUD"]
-offset_left = 533.0
-offset_top = 19.0
-offset_right = 664.0
-offset_bottom = 69.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 151.0
+offset_bottom = 65.0
 text = "Spawn Enemy"
 
 [connection signal="pressed" from="old_HUD/SpawnEnemy" to="." method="_on_spawn_enemy_pressed"]
