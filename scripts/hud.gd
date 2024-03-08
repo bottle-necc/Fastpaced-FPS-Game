@@ -70,6 +70,7 @@ func _on_controls_pressed():
 		i.show()
 
 func _on_sensitivity_value_changed(value):
-	
-	var f = FileAccess.open("user://settings.json", FileAccess.READ)
-	
+	SettingsManager.load_settings()
+	var settings = SettingsManager.settings_dict
+	settings["controls"]["sensitivity"] = value * 0.0001
+	SettingsManager.save_settings()
