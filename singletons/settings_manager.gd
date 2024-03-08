@@ -18,7 +18,7 @@ func _ready():
 
 	if !settings_exist:
 		var f = FileAccess.open("user://settings.json", FileAccess.WRITE)
-		f.store_string(json.stringify(default_settings))
+		f.store_string(JSON.stringify(default_settings))
 		f.close()
 
 	load_settings()
@@ -40,7 +40,5 @@ func save_settings():
 	# update settings_dict juuust in case
 	
 	var f = FileAccess.open("user://settings.json", FileAccess.WRITE)
-	f.store_string(json.stringify(settings_dict))
+	f.store_string(JSON.stringify(settings_dict))
 	f.close
-	
-	load_settings()

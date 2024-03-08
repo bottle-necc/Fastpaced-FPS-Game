@@ -44,6 +44,8 @@ signal paused
 
 # Handles mouse focus.
 func _unhandled_input(event):
+	sensitivity = SettingsManager.settings_dict["controls"]["sensitivity"]
+
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		is_mouse_captured = true
