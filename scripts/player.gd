@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
 var sensitivity = 0.0025
-var speed
+var speed = 4
 var jump_velocity = 5
 var gravity = 9.8
 var direction
 var is_wallrunning
-var is_running
+var is_running = false
 var input_dir
 var wallrun_timeout = false
 var wall_direction
@@ -25,6 +25,7 @@ var same_wall = false
 var old_wall_normal
 var wall_normal_values
 var is_ads = false
+var is_paused = false
 
 # Creates a new bullet scene on call.
 var bullet = load("res://scenes/bullet.tscn")
@@ -46,13 +47,11 @@ signal paused
 func _unhandled_input(event):
 	sensitivity = SettingsManager.settings_dict["controls"]["sensitivity"]
 
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		is_mouse_captured = true
-	elif event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		is_mouse_captured = false
 		paused.emit()
+		is_paused = true
 
 	# Rotates the camera.
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -92,14 +91,6 @@ func _physics_process(delta):
 	# Regenerates double jump when on a surface.
 	if is_on_floor() or is_on_a_wall:
 		double_jump = true
-
-	# Handles sprinting.
-	if Input.is_action_pressed("run"):
-		speed = 7
-		is_running = true
-	else:
-		speed = 4
-		is_running = false
 
 	# Moves the character IF they are not wallrunning.
 	if !is_wallrunning:
@@ -143,7 +134,7 @@ func _physics_process(delta):
 			ammo -= 1
 
 	# Aim down sights.
-	if Input.is_action_pressed("aim"):
+	if Input.is_action_pressed("aim") and !is_paused:
 		gun.position.x = 0
 		gun.position.y = -0.225
 		gun.position.z = -0.45
@@ -161,6 +152,7 @@ func _physics_process(delta):
 	move_and_slide()
 	wall_run()
 	HUD()
+	sprint()
 
 func wall_run():
 	if old_wall_normal == wall_normal:
@@ -331,3 +323,29 @@ func HUD():
 func _on_hud_unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	is_mouse_captured = true
+	is_paused = false
+
+func sprint():
+	var settings = SettingsManager.settings_dict
+
+	# Hold to run
+	if settings["controls"]["sprint mode"] == 0:
+		if Input.is_action_pressed("run"):
+			speed = 8
+			is_running = true
+		else:
+			speed = 4
+			is_running = false
+	# Toggle sprint
+	elif settings["controls"]["sprint mode"] == 1:
+		# Replace velocity with something that checks if WASD is pressed
+		if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+			if Input.is_action_just_pressed("run") and !is_running:
+				is_running = true
+				speed = 8
+			elif Input.is_action_just_pressed("run") and is_running:
+				is_running = false
+				speed = 4
+		else:
+			is_running = false
+			speed = 4

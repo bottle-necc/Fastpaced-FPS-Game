@@ -28,6 +28,9 @@ func _ready():
 	fullscreen.button_pressed = settings["video"]["fullscreen"]
 	_on_fullscreen_pressed()
 
+	# Shows the current sprint mode on bootup
+	$"Options Screen/Controls/Sprint Mode".selected = settings["controls"]["sprint mode"]
+
 	# Shows a default tab on start-up
 	child_list = video.get_children()
 	for i in child_list:
@@ -106,4 +109,9 @@ func _on_fullscreen_pressed():
 
 	# Saves the current setting.
 	settings["video"]["fullscreen"] = is_fullscreen
+	SettingsManager.save_settings()
+
+func _on_sprint_mode_item_selected(index):
+	var settings = SettingsManager.settings_dict
+	settings["controls"]["sprint mode"] = index
 	SettingsManager.save_settings()

@@ -120,10 +120,11 @@ offset_bottom = 175.0
 text = "Video"
 
 [node name="Fullscreen" type="CheckButton" parent="Options Screen/Video"]
+visible = false
 layout_mode = 0
-offset_left = 150.0
+offset_left = 151.0
 offset_top = -87.0
-offset_right = 194.0
+offset_right = 195.0
 offset_bottom = -63.0
 
 [node name="Label" type="Label" parent="Options Screen/Video/Fullscreen"]
@@ -195,6 +196,28 @@ offset_right = 81.0
 offset_bottom = -4.0
 text = "Sensitivity"
 
+[node name="Sprint Mode" type="OptionButton" parent="Options Screen/Controls"]
+visible = false
+offset_left = 156.0
+offset_top = -207.0
+offset_right = 274.0
+offset_bottom = -187.0
+item_count = 2
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Toggle"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="Options Screen/Controls/Sprint Mode"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -30.0
+offset_right = 102.0
+offset_bottom = -4.0
+text = "Sprint Mode
+"
+
 [node name="Key Mapping" type="Button" parent="Options Screen"]
 layout_mode = 0
 offset_left = 28.0
@@ -213,4 +236,5 @@ text = "Key Mapping
 [connection signal="pressed" from="Options Screen/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="Options Screen/Controls" to="." method="_on_controls_pressed"]
 [connection signal="value_changed" from="Options Screen/Controls/Sensitivity" to="." method="_on_sensitivity_value_changed"]
+[connection signal="item_selected" from="Options Screen/Controls/Sprint Mode" to="." method="_on_sprint_mode_item_selected"]
 [connection signal="pressed" from="Options Screen/Key Mapping" to="." method="_on_key_mapping_pressed"]

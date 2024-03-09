@@ -4,7 +4,8 @@ const SETTINGS_JSON_PATH = "user://settings.json"
 
 var default_settings = {
 	"controls" : {
-		"sensitivity" : 0.0025
+		"sensitivity" : 0.0025,
+		"sprint mode" : 0
 	},
 	"video" : {
 		"fullscreen" : true
@@ -13,8 +14,6 @@ var default_settings = {
 
 # Dictionary of the values in settings.json
 var settings_dict = {}
-
-var json = JSON.new()
 
 func _ready():
 	# Checks if the settings json file exists.
@@ -35,10 +34,7 @@ func load_settings():
 	var f = FileAccess.open("user://settings.json", FileAccess.READ)
 	var json_string = f.get_as_text()
 	f.close()
-
-	# Don't ask me why I need an initialized json funtion here but not while saving. I've got no clue.
-	# Also since the code works... I don't care.
-	settings_dict = json.parse_string(json_string)
+	settings_dict = JSON.parse_string(json_string)
 	return settings_dict
 
 func save_settings():
