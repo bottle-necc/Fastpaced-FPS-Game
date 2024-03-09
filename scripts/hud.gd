@@ -8,21 +8,23 @@ var child_list
 @onready var pause_screen = $"Pause Screen"
 @onready var options_screen = $"Options Screen"
 @onready var background = $Background
+@onready var video = $"Options Screen/Video"
 @onready var controls = $"Options Screen/Controls"
 @onready var audio = $"Options Screen/Audio"
 @onready var sensitivity = $"Options Screen/Controls/Sensitivity"
+@onready var keys = $"Options Screen/Key Mapping"
 
 func _ready():
 	pause_screen.hide()
 	options_screen.hide()
 	unpause.emit()
 
+	# Adjusts the slider position to reflect the current mouse sensitivity
 	var settings = SettingsManager.settings_dict
 	sensitivity.value = settings["controls"]["sensitivity"] * 10000
 
-	# THIS IS TEMPORARY. The purpose of this is because the options menu doesn't currently have a default tab to show.
-	child_list = audio.get_children()
-
+	# Shows a default tab on start-up
+	child_list = video.get_children()
 	for i in child_list:
 		i.show()
 
@@ -58,20 +60,31 @@ func _on_return_pressed():
 	options_screen.hide()
 	pause_screen.show()
 
-func _on_controls_pressed():
-
+func swap_tab(tab):
 	# Hides all the children of the previous tab before giving a new array to child_list.
-	if child_list != controls.get_children():
+	if child_list != tab.get_children():
 		for i in child_list:
 			i.hide()
 
-		child_list = controls.get_children()
+		child_list = tab.get_children()
 
 	# Shows all of the children of the current tab once the new array has been assigned to child_list.
 	for i in child_list:
 		i.show()
 
+func _on_controls_pressed():
+	swap_tab(controls)
+
 func _on_sensitivity_value_changed(value):
 	var settings = SettingsManager.settings_dict
 	settings["controls"]["sensitivity"] = value * 0.0001
 	SettingsManager.save_settings()
+
+func _on_video_pressed():
+	swap_tab(video)
+
+func _on_audio_pressed():
+	swap_tab(audio)
+
+func _on_key_mapping_pressed():
+	swap_tab(keys)
