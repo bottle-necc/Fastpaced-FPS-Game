@@ -13,6 +13,7 @@ var child_list
 @onready var audio = $"Options Screen/Audio"
 @onready var sensitivity = $"Options Screen/Controls/Sensitivity"
 @onready var keys = $"Options Screen/Key Mapping"
+@onready var fullscreen = $"Options Screen/Video/Fullscreen"
 
 func _ready():
 	pause_screen.hide()
@@ -88,3 +89,11 @@ func _on_audio_pressed():
 
 func _on_key_mapping_pressed():
 	swap_tab(keys)
+
+func _on_fullscreen_pressed():
+	var is_fullscreen = fullscreen.button_pressed
+
+	if is_fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

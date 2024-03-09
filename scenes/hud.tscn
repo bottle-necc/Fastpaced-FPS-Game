@@ -120,18 +120,17 @@ offset_bottom = 175.0
 text = "Video"
 
 [node name="Fullscreen" type="CheckButton" parent="Options Screen/Video"]
-visible = false
 layout_mode = 0
-offset_left = 147.0
+offset_left = 150.0
 offset_top = -87.0
-offset_right = 191.0
+offset_right = 194.0
 offset_bottom = -63.0
 
 [node name="Label" type="Label" parent="Options Screen/Video/Fullscreen"]
 layout_mode = 0
-offset_left = 9.0
+offset_left = 6.0
 offset_top = -26.0
-offset_right = 88.0
+offset_right = 85.0
 text = "Fullscreen"
 
 [node name="Audio" type="Button" parent="Options Screen"]
@@ -210,6 +209,7 @@ text = "Key Mapping
 [connection signal="pressed" from="Pause Screen/Quit Game" to="." method="_on_quit_game_pressed"]
 [connection signal="pressed" from="Options Screen/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Options Screen/Video" to="." method="_on_video_pressed"]
+[connection signal="pressed" from="Options Screen/Video/Fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="Options Screen/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="Options Screen/Controls" to="." method="_on_controls_pressed"]
 [connection signal="value_changed" from="Options Screen/Controls/Sensitivity" to="." method="_on_sensitivity_value_changed"]
