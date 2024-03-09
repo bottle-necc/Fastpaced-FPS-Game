@@ -16,13 +16,17 @@ var child_list
 @onready var fullscreen = $"Options Screen/Video/Fullscreen"
 
 func _ready():
+	var settings = SettingsManager.settings_dict
 	pause_screen.hide()
 	options_screen.hide()
 	unpause.emit()
 
 	# Adjusts the slider position to reflect the current mouse sensitivity
-	var settings = SettingsManager.settings_dict
 	sensitivity.value = settings["controls"]["sensitivity"] * 10000
+
+	# Toggles to fullscreen/windowed on bootup, depending on user input
+	fullscreen.button_pressed = settings["video"]["fullscreen"]
+	_on_fullscreen_pressed()
 
 	# Shows a default tab on start-up
 	child_list = video.get_children()
@@ -92,8 +96,14 @@ func _on_key_mapping_pressed():
 
 func _on_fullscreen_pressed():
 	var is_fullscreen = fullscreen.button_pressed
+	var settings = SettingsManager.settings_dict
 
+	# Adjusts between fullscreen and windowed depending on the setting.
 	if is_fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+	# Saves the current setting.
+	settings["video"]["fullscreen"] = is_fullscreen
+	SettingsManager.save_settings()
