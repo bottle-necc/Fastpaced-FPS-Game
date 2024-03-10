@@ -111,14 +111,14 @@ func _physics_process(delta):
 				velocity.z += direction.z * 0.02
 
 				# Maximum velocity while falling. NEEDS WORK, CAUSES BUG.
-				if velocity.x > 10:
-					velocity.x = 10
-				elif velocity.x < -10:
-					velocity.x = -10
-				if velocity.z > 10:
-					velocity.z = 10
-				elif velocity.z < -10:
-					velocity.z = -10
+				#if velocity.x > 10:
+				#	velocity.x = 10
+				#elif velocity.x < -10:
+				#	velocity.x = -10
+				#if velocity.z > 10:
+				#	velocity.z = 10
+				#elif velocity.z < -10:
+				#	velocity.z = -10
 
 	# Fires a bullet.
 	if Input.is_action_pressed("shoot") and is_mouse_captured and !is_reloading:

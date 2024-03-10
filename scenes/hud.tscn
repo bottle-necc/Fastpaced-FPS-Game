@@ -100,7 +100,7 @@ modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_top = 98.0
-offset_right = 160.0
+offset_right = 168.0
 offset_bottom = 107.0
 
 [node name="Return" type="Button" parent="Options Screen"]
@@ -198,6 +198,7 @@ text = "Sensitivity"
 
 [node name="Sprint Mode" type="OptionButton" parent="Options Screen/Controls"]
 visible = false
+layout_mode = 0
 offset_left = 156.0
 offset_top = -207.0
 offset_right = 274.0
@@ -226,6 +227,44 @@ offset_right = 136.0
 offset_bottom = 450.0
 text = "Key Mapping
 "
+
+[node name="General" type="Button" parent="Options Screen/Key Mapping"]
+visible = false
+layout_mode = 0
+offset_left = 167.0
+offset_top = -373.0
+offset_right = 275.0
+offset_bottom = -326.0
+text = "General"
+
+[node name="Movement" type="Button" parent="Options Screen/Key Mapping"]
+visible = false
+layout_mode = 0
+offset_left = 362.0
+offset_top = -373.0
+offset_right = 470.0
+offset_bottom = -326.0
+text = "Movement
+"
+
+[node name="Combat" type="Button" parent="Options Screen/Key Mapping"]
+visible = false
+layout_mode = 0
+offset_left = 557.0
+offset_top = -373.0
+offset_right = 665.0
+offset_bottom = -326.0
+text = "Combat"
+
+[node name="Panel3" type="Panel" parent="Options Screen/Key Mapping"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 131.0
+offset_top = -305.0
+offset_right = 692.0
+offset_bottom = -296.0
 
 [connection signal="pressed" from="Pause Screen/Resume" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pause Screen/Options" to="." method="_on_options_pressed"]

@@ -32,7 +32,7 @@ func _ready():
 	$"Options Screen/Controls/Sprint Mode".selected = settings["controls"]["sprint mode"]
 
 	# Shows a default tab on start-up
-	child_list = video.get_children()
+	child_list = keys.get_children()
 	for i in child_list:
 		i.show()
 
@@ -115,3 +115,4 @@ func _on_sprint_mode_item_selected(index):
 	var settings = SettingsManager.settings_dict
 	settings["controls"]["sprint mode"] = index
 	SettingsManager.save_settings()
+

@@ -5,10 +5,86 @@ const SETTINGS_JSON_PATH = "user://settings.json"
 var default_settings = {
 	"controls" : {
 		"sensitivity" : 0.0025,
-		"sprint mode" : 0
+		"sprint mode" : 1
 	},
 	"video" : {
 		"fullscreen" : true
+	},
+	"keys" : {
+		"general" : {
+			"interact" : {
+				"key" : "f",
+				"mode" : 0
+			},
+			"map" : {
+				"key" : "m",
+				"mode" : 0
+			},
+			"scoreboard" : {
+				"key" : "tab",
+				"mode" : 1
+			},
+			"tuant" : "b",
+			"textchat" : "enter",
+			"voicechat" : {
+				"key" : "caps",
+				"mode" : 0
+			}
+		},
+		"movement" : {
+			"move forward" : "w",
+			"move backward" : "s",
+			"move left" : "a",
+			"move right" : "d",
+			"sprint" : {
+				"key" : "shift",
+				"mode" : 1
+			},
+			"crouch" : {
+				"key" : "c",
+				"mode" : 0
+			},
+			"prone" : {
+				"key" : "z",
+				"mode" : 1
+			},
+			"crouch/prone" : {
+				"key" : "x",
+				"mode" : 0
+			},
+			"jump" : {
+				"key" : "space",
+				"mode" : 1
+			},
+			"vault" : {
+				"key" : "lalt",
+				"mode" : 1
+			},
+			"jump/vault" : {
+				"key" : "NONE",
+				"mode" : 0
+			}
+		},
+		"combat" : {
+			"shoot" : "lmb",
+			"aim" : {
+				"key" : "rmb",
+				"mode" : 0
+			},
+			"reload" : "r",
+			"primary" : "1",
+			"secondary" : "2",
+			"grenade" : "g",
+			"ability" : {
+				"key" : "q",
+				"mode" : 1
+			},
+			"tool" : "e",
+			"melee" : {
+				"key" : "mmb",
+				"mode" : 0
+			}
+		}
 	}
 }
 
