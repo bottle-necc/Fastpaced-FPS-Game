@@ -14,6 +14,9 @@ var child_list
 @onready var sensitivity = $"Options Screen/Controls/Sensitivity"
 @onready var keys = $"Options Screen/Key Mapping"
 @onready var fullscreen = $"Options Screen/Video/Fullscreen"
+@onready var general = $"Options Screen/Key Mapping/General"
+@onready var movement = $"Options Screen/Key Mapping/Movement"
+@onready var combat = $"Options Screen/Key Mapping/Combat"
 
 func _ready():
 	var settings = SettingsManager.settings_dict
@@ -32,7 +35,7 @@ func _ready():
 	$"Options Screen/Controls/Sprint Mode".selected = settings["controls"]["sprint mode"]
 
 	# Shows a default tab on start-up
-	child_list = keys.get_children()
+	child_list = video.get_children()
 	for i in child_list:
 		i.show()
 
@@ -46,6 +49,32 @@ func _process(delta):
 		background.show()
 	else:
 		background.hide()
+
+func swap_tab(tab):
+	# Hides all the children of the previous tab before giving a new array to child_list.
+	if child_list != tab.get_children():
+		for i in child_list:
+			i.hide()
+
+		child_list = tab.get_children()
+
+	# Shows all of the children of the current tab once the new array has been assigned to child_list.
+	for i in child_list:
+		i.show()
+
+func key_map_swap_tab(tab):
+	if tab == 0:
+		general.get_child(0).show()
+		movement.get_child(0).hide()
+		combat.get_child(0).hide()
+	elif tab == 1:
+		general.get_child(0).hide()
+		movement.get_child(0).show()
+		combat.get_child(0).hide()
+	elif tab == 2:
+		general.get_child(0).hide()
+		movement.get_child(0).hide()
+		combat.get_child(0).show()
 
 func _on_player_paused():
 	if !is_paused:
@@ -67,18 +96,6 @@ func _on_options_pressed():
 func _on_return_pressed():
 	options_screen.hide()
 	pause_screen.show()
-
-func swap_tab(tab):
-	# Hides all the children of the previous tab before giving a new array to child_list.
-	if child_list != tab.get_children():
-		for i in child_list:
-			i.hide()
-
-		child_list = tab.get_children()
-
-	# Shows all of the children of the current tab once the new array has been assigned to child_list.
-	for i in child_list:
-		i.show()
 
 func _on_controls_pressed():
 	swap_tab(controls)
@@ -116,3 +133,11 @@ func _on_sprint_mode_item_selected(index):
 	settings["controls"]["sprint mode"] = index
 	SettingsManager.save_settings()
 
+func _on_general_pressed():
+	key_map_swap_tab(0)
+
+func _on_movement_pressed():
+	key_map_swap_tab(1)
+
+func _on_combat_pressed():
+	key_map_swap_tab(2)

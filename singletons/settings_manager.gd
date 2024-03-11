@@ -16,10 +16,6 @@ var default_settings = {
 				"key" : "f",
 				"mode" : 0
 			},
-			"map" : {
-				"key" : "m",
-				"mode" : 0
-			},
 			"scoreboard" : {
 				"key" : "tab",
 				"mode" : 1
@@ -75,10 +71,7 @@ var default_settings = {
 			"primary" : "1",
 			"secondary" : "2",
 			"grenade" : "g",
-			"ability" : {
-				"key" : "q",
-				"mode" : 1
-			},
+			"ability" : "q",
 			"tool" : "e",
 			"melee" : {
 				"key" : "mmb",

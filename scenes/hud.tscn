@@ -237,6 +237,239 @@ offset_right = 275.0
 offset_bottom = -326.0
 text = "General"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Options Screen/Key Mapping/General"]
+layout_mode = 2
+offset_top = 77.0
+offset_right = 498.0
+offset_bottom = 250.0
+theme_override_constants/separation = 13
+
+[node name="Interact" type="HBoxContainer" parent="Options Screen/Key Mapping/General/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Interact"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/General/VBoxContainer/Interact/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/General/VBoxContainer/Interact/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Interact"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/General/VBoxContainer/Interact/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "F
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Interact"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/General/VBoxContainer/Interact/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Scoreboard" type="HBoxContainer" parent="Options Screen/Key Mapping/General/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Scoreboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "TAB"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Taunt" type="HBoxContainer" parent="Options Screen/Key Mapping/General/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Taunt"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/General/VBoxContainer/Taunt/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/General/VBoxContainer/Taunt/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Taunt
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Taunt"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/General/VBoxContainer/Taunt/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "B"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Taunt"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/General/VBoxContainer/Taunt/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Textchat" type="HBoxContainer" parent="Options Screen/Key Mapping/General/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Textchat"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/General/VBoxContainer/Textchat/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/General/VBoxContainer/Textchat/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Textchat
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Textchat"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/General/VBoxContainer/Textchat/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "ENTER"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Textchat"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/General/VBoxContainer/Textchat/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Voicechat" type="HBoxContainer" parent="Options Screen/Key Mapping/General/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Voicechat"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/General/VBoxContainer/Voicechat/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/General/VBoxContainer/Voicechat/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Voicechat
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Voicechat"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/General/VBoxContainer/Voicechat/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "CAPS"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/General/VBoxContainer/Voicechat"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/General/VBoxContainer/Voicechat/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
 [node name="Movement" type="Button" parent="Options Screen/Key Mapping"]
 visible = false
 layout_mode = 0
@@ -247,6 +480,514 @@ offset_bottom = -326.0
 text = "Movement
 "
 
+[node name="ScrollContainer" type="ScrollContainer" parent="Options Screen/Key Mapping/Movement"]
+visible = false
+offset_left = -195.0
+offset_top = 77.0
+offset_right = 330.0
+offset_bottom = 450.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer"]
+layout_mode = 2
+
+[node name="Move Forward" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Forward"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Forward/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Forward/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Move Forward"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Forward"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Forward/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "W
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Forward"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Forward/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Move Backward" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Backward"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Backward/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Backward/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Move Backward"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Backward"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Backward/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "S
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Backward"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Backward/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Move Left" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Left"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Left/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Left/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Move Left"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Left"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Left/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "A
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Left"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Left/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Move Right" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Right"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Right/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Right/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Move Right"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Right"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Right/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "D
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Right"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Right/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Sprint" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Sprint"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Sprint/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Sprint/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Sprint"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Sprint"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Sprint/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "LSHIFT
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Sprint"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Sprint/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Crouch" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Crouch"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "C
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Prone" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Prone"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Prone/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Prone/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Prone"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Prone"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Prone/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "Z
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Prone"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Prone/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Crouch_Prone" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch_Prone"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch_Prone/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch_Prone/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Crouch/Prone"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch_Prone"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch_Prone/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "X
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch_Prone"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch_Prone/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Inverted"
+popup/item_1/id = 1
+
+[node name="Jump" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "SPACE
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Vault" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Vault"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Vault/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Vault/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Vault"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Vault"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Vault/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "LALT"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Vault"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Vault/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Jump_Vault" type="HBoxContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump_Vault"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 21
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump_Vault/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump_Vault/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Jump/Vault"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump_Vault"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+theme_override_constants/margin_bottom = 21
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump_Vault/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "NONE"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump_Vault"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_bottom = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump_Vault/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Inverted"
+popup/item_1/id = 1
+
 [node name="Combat" type="Button" parent="Options Screen/Key Mapping"]
 visible = false
 layout_mode = 0
@@ -255,6 +996,430 @@ offset_top = -373.0
 offset_right = 665.0
 offset_bottom = -326.0
 text = "Combat"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Options Screen/Key Mapping/Combat"]
+visible = false
+offset_left = -390.0
+offset_top = 77.0
+offset_right = 135.0
+offset_bottom = 450.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer"]
+layout_mode = 2
+
+[node name="Shoot" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Shoot"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Shoot/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Shoot/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Shoot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Shoot"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Shoot/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "LMB
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Shoot"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Shoot/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Aim" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Aim"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Aim/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Aim/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Aim"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Aim"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Aim/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "RMB
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Aim"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Aim/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Reload" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Reload"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Reload/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Reload/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Reload"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Reload"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Reload/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "R
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Reload"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Reload/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Primary" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Primary"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Primary/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Primary/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Primary"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Primary"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Primary/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "1"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Primary"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Primary/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Secondary" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Secondary"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Secondary/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Secondary/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Secondary"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Secondary"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Secondary/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "2
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Secondary"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Secondary/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 1
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Grenade" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Grenade"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Grenade/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Grenade/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Grenade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Grenade"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Grenade/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "G
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Grenade"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Grenade/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Ability" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Ability"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Ability/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Ability/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Ability"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Ability"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Ability/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "Q
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Ability"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Ability/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Tool" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Tool"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Tool/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Tool/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Tool"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Tool"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Tool/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "E
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Tool"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Tool/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+disabled = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Hold"
+popup/item_0/id = 0
+popup/item_1/text = "Click"
+popup/item_1/id = 1
+popup/item_2/text = "Double Click"
+popup/item_2/id = 2
+
+[node name="Melee" type="HBoxContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Melee"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 21
+
+[node name="Panel" type="Panel" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Melee/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Melee/MarginContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Melee"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Melee"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_right = 98
+theme_override_constants/margin_bottom = 21
+
+[node name="Button" type="Button" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Melee/MarginContainer2"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+text = "MMB
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Melee"]
+layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_bottom = 21
+
+[node name="OptionButton" type="OptionButton" parent="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Melee/MarginContainer3"]
+custom_minimum_size = Vector2(139, 0)
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Inverted"
+popup/item_1/id = 1
 
 [node name="Panel3" type="Panel" parent="Options Screen/Key Mapping"]
 visible = false
@@ -277,3 +1442,6 @@ offset_bottom = -296.0
 [connection signal="value_changed" from="Options Screen/Controls/Sensitivity" to="." method="_on_sensitivity_value_changed"]
 [connection signal="item_selected" from="Options Screen/Controls/Sprint Mode" to="." method="_on_sprint_mode_item_selected"]
 [connection signal="pressed" from="Options Screen/Key Mapping" to="." method="_on_key_mapping_pressed"]
+[connection signal="pressed" from="Options Screen/Key Mapping/General" to="." method="_on_general_pressed"]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement" to="." method="_on_movement_pressed"]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat" to="." method="_on_combat_pressed"]
