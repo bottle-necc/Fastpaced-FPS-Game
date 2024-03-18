@@ -63,6 +63,8 @@ func swap_tab(tab):
 		i.show()
 
 func key_map_swap_tab(tab):
+	# Handles cycling between different tabs.
+
 	if tab == 0:
 		general.get_child(0).show()
 		movement.get_child(0).hide()
@@ -81,6 +83,7 @@ func _on_player_paused():
 		pause_screen.show()
 		is_paused = true
 
+# Resume button.
 func _on_button_pressed():
 	pause_screen.hide()
 	unpause.emit()
@@ -141,3 +144,14 @@ func _on_movement_pressed():
 
 func _on_combat_pressed():
 	key_map_swap_tab(2)
+
+func _on_key_button_pressed(action):
+	# Number is ordered from first action in general to last, then first of movement to last etc.
+
+	# Runs a new instance of the key_listener.
+	var key_listener = preload("res://scenes/key_listener.tscn").instantiate()
+	add_child(key_listener)
+	
+	# Placeholder to check if the correct action is shown
+	var label = key_listener.get_child(0).get_child(0)
+	label.text = "%s" % [action]

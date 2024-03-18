@@ -229,7 +229,6 @@ text = "Key Mapping
 "
 
 [node name="General" type="Button" parent="Options Screen/Key Mapping"]
-visible = false
 layout_mode = 0
 offset_left = 167.0
 offset_top = -373.0
@@ -471,7 +470,6 @@ popup/item_2/text = "Double Click"
 popup/item_2/id = 2
 
 [node name="Movement" type="Button" parent="Options Screen/Key Mapping"]
-visible = false
 layout_mode = 0
 offset_left = 362.0
 offset_top = -373.0
@@ -482,6 +480,7 @@ text = "Movement
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Options Screen/Key Mapping/Movement"]
 visible = false
+layout_mode = 0
 offset_left = -195.0
 offset_top = 77.0
 offset_right = 330.0
@@ -989,7 +988,6 @@ popup/item_1/text = "Inverted"
 popup/item_1/id = 1
 
 [node name="Combat" type="Button" parent="Options Screen/Key Mapping"]
-visible = false
 layout_mode = 0
 offset_left = 557.0
 offset_top = -373.0
@@ -999,6 +997,7 @@ text = "Combat"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Options Screen/Key Mapping/Combat"]
 visible = false
+layout_mode = 0
 offset_left = -390.0
 offset_top = 77.0
 offset_right = 135.0
@@ -1422,7 +1421,6 @@ popup/item_1/text = "Inverted"
 popup/item_1/id = 1
 
 [node name="Panel3" type="Panel" parent="Options Screen/Key Mapping"]
-visible = false
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
@@ -1443,5 +1441,7 @@ offset_bottom = -296.0
 [connection signal="item_selected" from="Options Screen/Controls/Sprint Mode" to="." method="_on_sprint_mode_item_selected"]
 [connection signal="pressed" from="Options Screen/Key Mapping" to="." method="_on_key_mapping_pressed"]
 [connection signal="pressed" from="Options Screen/Key Mapping/General" to="." method="_on_general_pressed"]
+[connection signal="pressed" from="Options Screen/Key Mapping/General/VBoxContainer/Interact/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [0]]
+[connection signal="pressed" from="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [1]]
 [connection signal="pressed" from="Options Screen/Key Mapping/Movement" to="." method="_on_movement_pressed"]
 [connection signal="pressed" from="Options Screen/Key Mapping/Combat" to="." method="_on_combat_pressed"]
