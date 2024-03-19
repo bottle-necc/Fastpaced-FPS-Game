@@ -146,11 +146,7 @@ func _on_combat_pressed():
 	key_map_swap_tab(2)
 
 func _on_key_button_pressed(action):
-	# Number is ordered from first action in general to last, then first of movement to last etc.
-
 	# Runs a new instance of the key_listener.
 	var key_listener = preload("res://scenes/key_listener.tscn").instantiate()
 	SettingsManager.action_int = action
 	add_child(key_listener)
-
-	# TODO: CREATE A CODE THAT SWAPS THE KEY. THEN LET EVERY BUTTON ACCESS THIS FUNCTION.

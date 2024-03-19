@@ -20,7 +20,7 @@ var default_settings = {
 				"key" : "tab",
 				"mode" : 1
 			},
-			"tuant" : "b",
+			"taunt" : "b",
 			"textchat" : "enter",
 			"voicechat" : {
 				"key" : "caps",

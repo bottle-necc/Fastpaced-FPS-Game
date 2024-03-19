@@ -229,6 +229,7 @@ text = "Key Mapping
 "
 
 [node name="General" type="Button" parent="Options Screen/Key Mapping"]
+visible = false
 layout_mode = 0
 offset_left = 167.0
 offset_top = -373.0
@@ -470,6 +471,7 @@ popup/item_2/text = "Double Click"
 popup/item_2/id = 2
 
 [node name="Movement" type="Button" parent="Options Screen/Key Mapping"]
+visible = false
 layout_mode = 0
 offset_left = 362.0
 offset_top = -373.0
@@ -988,6 +990,7 @@ popup/item_1/text = "Inverted"
 popup/item_1/id = 1
 
 [node name="Combat" type="Button" parent="Options Screen/Key Mapping"]
+visible = false
 layout_mode = 0
 offset_left = 557.0
 offset_top = -373.0
@@ -1421,6 +1424,7 @@ popup/item_1/text = "Inverted"
 popup/item_1/id = 1
 
 [node name="Panel3" type="Panel" parent="Options Screen/Key Mapping"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
@@ -1443,5 +1447,28 @@ offset_bottom = -296.0
 [connection signal="pressed" from="Options Screen/Key Mapping/General" to="." method="_on_general_pressed"]
 [connection signal="pressed" from="Options Screen/Key Mapping/General/VBoxContainer/Interact/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [0]]
 [connection signal="pressed" from="Options Screen/Key Mapping/General/VBoxContainer/Scoreboard/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [1]]
+[connection signal="pressed" from="Options Screen/Key Mapping/General/VBoxContainer/Taunt/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [2]]
+[connection signal="pressed" from="Options Screen/Key Mapping/General/VBoxContainer/Textchat/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [3]]
+[connection signal="pressed" from="Options Screen/Key Mapping/General/VBoxContainer/Voicechat/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [4]]
 [connection signal="pressed" from="Options Screen/Key Mapping/Movement" to="." method="_on_movement_pressed"]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Forward/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [5]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Backward/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [6]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Left/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [7]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Move Right/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [8]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Sprint/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [9]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [10]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Prone/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [11]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Crouch_Prone/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [12]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [13]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Vault/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [14]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Movement/ScrollContainer/VBoxContainer/Jump_Vault/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [15]]
 [connection signal="pressed" from="Options Screen/Key Mapping/Combat" to="." method="_on_combat_pressed"]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Shoot/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [16]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Aim/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [17]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Reload/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [18]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Primary/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [19]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Secondary/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [20]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Grenade/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [21]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Ability/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [22]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Tool/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [23]]
+[connection signal="pressed" from="Options Screen/Key Mapping/Combat/ScrollContainer/VBoxContainer/Melee/MarginContainer2/Button" to="." method="_on_key_button_pressed" binds= [24]]
