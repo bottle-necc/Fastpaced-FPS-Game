@@ -1,6 +1,15 @@
-[gd_scene format=3 uid="uid://chpaeibc1vrql"]
+[gd_scene load_steps=4 format=3 uid="uid://chpaeibc1vrql"]
+
+[ext_resource type="Script" path="res://scenes/key_listener.gd" id="1_s2phk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0si47"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 0.968627)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpbc0"]
+font_size = 24
 
 [node name="Key Listener" type="Node"]
+script = ExtResource("1_s2phk")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 8
@@ -8,17 +17,68 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -200.0
-offset_right = 400.0
-offset_bottom = 200.0
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0si47")
 
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 114.0
-offset_right = 522.0
-offset_bottom = 219.0
-text = "success"
+[node name="Instruction" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.5
+offset_top = 20.0
+offset_right = 136.5
+offset_bottom = 46.0
+grow_horizontal = 2
+text = "Press the desired key for the action"
+
+[node name="Action" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -18.5
+offset_right = 104.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Temporary Action"
+label_settings = SubResource("LabelSettings_rpbc0")
+
+[node name="Exit Prompt" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.5
+offset_top = -31.0
+offset_right = 77.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "To cancel, press ESC"
+
+[node name="Empty Prompt" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -91.5
+offset_top = -51.0
+offset_right = 91.5
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "To empty, press DELETE"

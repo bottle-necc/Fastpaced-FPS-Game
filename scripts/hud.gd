@@ -150,8 +150,7 @@ func _on_key_button_pressed(action):
 
 	# Runs a new instance of the key_listener.
 	var key_listener = preload("res://scenes/key_listener.tscn").instantiate()
+	SettingsManager.action_int = action
 	add_child(key_listener)
-	
-	# Placeholder to check if the correct action is shown
-	var label = key_listener.get_child(0).get_child(0)
-	label.text = "%s" % [action]
+
+	# TODO: CREATE A CODE THAT SWAPS THE KEY. THEN LET EVERY BUTTON ACCESS THIS FUNCTION.

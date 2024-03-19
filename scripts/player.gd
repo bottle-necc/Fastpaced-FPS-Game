@@ -94,7 +94,8 @@ func _physics_process(delta):
 
 	# Moves the character IF they are not wallrunning.
 	if !is_wallrunning:
-		input_dir = Input.get_vector("left", "right", "forward", "backward")
+		if !is_paused:
+			input_dir = Input.get_vector("left", "right", "forward", "backward")
 		direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if is_on_floor():
 			if direction:

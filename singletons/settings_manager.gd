@@ -84,6 +84,9 @@ var default_settings = {
 # Dictionary of the values in settings.json
 var settings_dict = {}
 
+# Used to transfer what action for the key listener to detect.
+var action_int
+
 func _ready():
 	# Checks if the settings json file exists.
 	var settings_exist = FileAccess.file_exists(SETTINGS_JSON_PATH)
