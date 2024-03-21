@@ -13,47 +13,47 @@ var default_settings = {
 	"keys" : {
 		"general" : {
 			"interact" : {
-				"key" : "f",
+				"key" : "F",
 				"mode" : 0
 			},
 			"scoreboard" : {
-				"key" : "tab",
+				"key" : "Tab",
 				"mode" : 1
 			},
-			"taunt" : "b",
-			"textchat" : "enter",
+			"taunt" : "B",
+			"textchat" : "Enter",
 			"voicechat" : {
-				"key" : "caps",
+				"key" : "CapsLock",
 				"mode" : 0
 			}
 		},
 		"movement" : {
-			"move forward" : "w",
-			"move backward" : "s",
-			"move left" : "a",
-			"move right" : "d",
+			"move forward" : "W",
+			"move backward" : "S",
+			"move left" : "A",
+			"move right" : "D",
 			"sprint" : {
-				"key" : "shift",
+				"key" : "Shift",
 				"mode" : 1
 			},
 			"crouch" : {
-				"key" : "c",
+				"key" : "C",
 				"mode" : 0
 			},
 			"prone" : {
-				"key" : "z",
+				"key" : "Z",
 				"mode" : 1
 			},
 			"crouch/prone" : {
-				"key" : "x",
+				"key" : "X",
 				"mode" : 0
 			},
 			"jump" : {
-				"key" : "space",
+				"key" : "Space",
 				"mode" : 1
 			},
 			"vault" : {
-				"key" : "lalt",
+				"key" : "Alt",
 				"mode" : 1
 			},
 			"jump/vault" : {
@@ -62,19 +62,19 @@ var default_settings = {
 			}
 		},
 		"combat" : {
-			"shoot" : "lmb",
+			"shoot" : "MOUSE_BUTTON_LEFT",
 			"aim" : {
-				"key" : "rmb",
+				"key" : "MOUSE_BUTTON_RIGHT",
 				"mode" : 0
 			},
-			"reload" : "r",
+			"reload" : "R",
 			"primary" : "1",
 			"secondary" : "2",
-			"grenade" : "g",
-			"ability" : "q",
-			"tool" : "e",
+			"grenade" : "G",
+			"ability" : "Q",
+			"tool" : "E",
 			"melee" : {
-				"key" : "mmb",
+				"key" : "MOUSE_BUTTON_MIDDLE",
 				"mode" : 0
 			}
 		}
