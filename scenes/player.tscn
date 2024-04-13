@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c34mnkfi2v3cn"]
+[gd_scene load_steps=22 format=3 uid="uid://c34mnkfi2v3cn"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jjlro"]
 [ext_resource type="PackedScene" uid="uid://ckibqhxqt8ish" path="res://scenes/rifle.tscn" id="2_5yvic"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLDU.gd" id="15_ctpdw"]
 [ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLUD.gd" id="15_ugk35"]
 [ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLDD.gd" id="16_lm711"]
+[ext_resource type="PackedScene" uid="uid://cx0jp7l1mjrjr" path="res://scenes/hud.tscn" id="19_v3hb3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ibeww"]
 
@@ -140,7 +141,7 @@ wait_time = 2.0
 [node name="WallrunTimer" type="Timer" parent="."]
 wait_time = 2.5
 
-[node name="HUD" type="Node" parent="."]
+[node name="HUD" parent="." instance=ExtResource("19_v3hb3")]
 
 [node name="Crosshair" type="TextureRect" parent="HUD"]
 anchors_preset = 8
@@ -185,6 +186,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 vertical_alignment = 2
 
+[connection signal="paused" from="." to="HUD" method="_on_player_paused"]
 [connection signal="hit" from="Neck/CheckBack" to="." method="_on_check_back_hit"]
 [connection signal="no_hit" from="Neck/CheckBack" to="." method="_on_check_back_no_hit"]
 [connection signal="hit" from="Neck/CheckRight" to="." method="_on_check_right_hit"]
@@ -217,3 +219,4 @@ vertical_alignment = 2
 [connection signal="no_hit" from="Neck/CheckLeft/CheckLD/CheckLDD" to="Neck/CheckLeft/CheckLD" method="_on_check_ldd_no_hit"]
 [connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
 [connection signal="timeout" from="WallrunTimer" to="." method="_on_wallrun_timer_timeout"]
+[connection signal="unpause" from="HUD" to="." method="_on_hud_unpause"]
