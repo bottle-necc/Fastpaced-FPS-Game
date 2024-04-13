@@ -77,6 +77,5 @@ func update_action_key():
 			else:
 				settings["keys"]["combat"][action_str]["key"] = new_key
 
-# TODO: UPDATE THE FUNCTION TO ADDITIONALLY ALTER THE INPUT MAP
-
 	SettingsManager.save_settings()
+	SettingsManager.update_input_map()

@@ -325,7 +325,7 @@ func sprint():
 
 	# Hold to run
 	if settings["controls"]["sprint mode"] == 0:
-		if Input.is_action_pressed("run"):
+		if Input.is_action_pressed("sprint"):
 			speed = 8
 			is_running = true
 		else:
@@ -335,10 +335,10 @@ func sprint():
 	elif settings["controls"]["sprint mode"] == 1:
 		# Replace velocity with something that checks if WASD is pressed
 		if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-			if Input.is_action_just_pressed("run") and !is_running:
+			if Input.is_action_just_pressed("sprint") and !is_running:
 				is_running = true
 				speed = 8
-			elif Input.is_action_just_pressed("run") and is_running:
+			elif Input.is_action_just_pressed("sprint") and is_running:
 				is_running = false
 				speed = 4
 		else:

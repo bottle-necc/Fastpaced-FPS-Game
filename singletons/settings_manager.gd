@@ -114,5 +114,19 @@ func save_settings():
 	f.store_string(JSON.stringify(settings_dict))
 	f.close()
 
-	# After saving, the new settings will be loaded to ensure everything is up to date.
-	load_settings()
+func update_input_map():
+	var action_list = ["interact", "scoreboard", "taunt", "textchat", "voicechat", "forward", "backward", 
+	"left", "right", "sprint", "crouch", "prone", "crouch/prone", "jump", "vault", "jump/vault", "shoot", 
+	"aim", "reload", "primary", "secondary", "grenade", "ability", "tool", "melee"]
+	var event
+
+	# Iterates through the action list to remove all keybinds before reassigning them.
+	for i in action_list:
+		if Input.is_action_pressed(i):
+			Input.action_release(i)
+		InputMap.action_erase_events(i)
+
+# I FOUND IT, I CAN CHANGE THE INPUTMAP THROUGH JSON WITH THIS!!!!!!!
+		#event = InputEventKey.new()
+		#event.keycode = KEY_R
+		#InputMap.action_add_event("forward", event)
