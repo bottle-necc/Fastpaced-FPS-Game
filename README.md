@@ -1,4 +1,1 @@
-INSTALL GUIDE:
-
-1. Go to folder named "executable".
-2. 
+Executable file published at a later date
