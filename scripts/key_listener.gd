@@ -1,15 +1,11 @@
 extends Node
 
-var action_list = ["interact", "scoreboard", "taunt", "textchat", "voicechat", "move forward", "move backward", 
-"move left", "move right", "sprint", "crouch", "prone", "crouch/prone", "jump", "vault", "jump/vault", "shoot", 
+var action_list = ["interact", "scoreboard", "taunt", "textchat", "voicechat", "forward", "backward", 
+"left", "right", "sprint", "crouch", "prone", "crouch_prone", "jump", "vault", "jump_vault", "shoot", 
 "aim", "reload", "primary", "secondary", "grenade", "ability", "tool", "melee"]
 
 # The purpose of this is to detect the move actions to properly capitalize them.
 var move_list = ["Move forward", "Move backward", "Move left", "Move right"]
-
-var mouse_list = ["MOUSE_BUTTON_NONE", "MOUSE_BUTTON_LEFT", "MOUSE_BUTTON_RIGHT", "MOUSE_BUTTON_MIDDLE", "MOUSE_BUTTON_WHEEL_UP",
-"MOUSE_BUTTON_WHEEL_DOWN", "MOUSE_BUTTON_WHEEL_LEFT", "MOUSE_BUTTON_WHEEL_RIGHT", "MOUSE_BUTTON_XBUTTON1",
-"MOUSE_BUTTON_XBUTTON2"]
 
 @onready var action = $Panel/Action
 
@@ -18,13 +14,13 @@ var new_key
 
 func _unhandled_input(event):
 	if event is InputEventKey:
-		new_key = event.as_text_keycode()
+		new_key = event.as_text_physical_keycode()
 		update_action_key()
 		queue_free()
 
 func _input(event):
 	if event is InputEventMouseButton:
-		new_key = mouse_list[event.button_index]
+		new_key = event.button_index
 		update_action_key()
 		queue_free()
 
@@ -37,9 +33,9 @@ func _ready():
 
 	if label in move_list:
 		label[5] = label[5].to_upper()
-	elif label == "Crouch/prone":
+	elif label == "Crouch_prone":
 		label = "Crouch/Prone"
-	elif label == "Jump/vault":
+	elif label == "Jump_vault":
 		label = "Jump/Vault"
 
 	action.text = label
@@ -52,11 +48,17 @@ func update_action_key():
 	var settings = SettingsManager.settings_dict
 	var actions_without_mode = [2, 3, 5, 6, 7, 8, 16, 18, 19, 20, 21, 22, 23]
 	var action_str = action_list[action_int]
+	var is_mouse
 
-	if new_key == "Delete":
+	if new_key is int:
+		is_mouse = true
+	else:
+		is_mouse = false
+
+	if !is_mouse and new_key == "Delete":
 		new_key = "NONE"
 
-	if new_key == "Escape":
+	if !is_mouse and new_key == "Escape":
 		queue_free()
 
 	# Sets the new key for the action in the correct place.

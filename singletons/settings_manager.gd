@@ -28,10 +28,10 @@ var default_settings = {
 			}
 		},
 		"movement" : {
-			"move forward" : "W",
-			"move backward" : "S",
-			"move left" : "A",
-			"move right" : "D",
+			"forward" : "W",
+			"backward" : "S",
+			"left" : "A",
+			"right" : "D",
 			"sprint" : {
 				"key" : "Shift",
 				"mode" : 1
@@ -44,7 +44,7 @@ var default_settings = {
 				"key" : "Z",
 				"mode" : 1
 			},
-			"crouch/prone" : {
+			"crouch_prone" : {
 				"key" : "X",
 				"mode" : 0
 			},
@@ -56,15 +56,15 @@ var default_settings = {
 				"key" : "Alt",
 				"mode" : 1
 			},
-			"jump/vault" : {
+			"jump_vault" : {
 				"key" : "NONE",
 				"mode" : 0
 			}
 		},
 		"combat" : {
-			"shoot" : "MOUSE_BUTTON_LEFT",
+			"shoot" : 1,
 			"aim" : {
-				"key" : "MOUSE_BUTTON_RIGHT",
+				"key" : 2,
 				"mode" : 0
 			},
 			"reload" : "R",
@@ -74,7 +74,7 @@ var default_settings = {
 			"ability" : "Q",
 			"tool" : "E",
 			"melee" : {
-				"key" : "MOUSE_BUTTON_MIDDLE",
+				"key" : 3,
 				"mode" : 0
 			}
 		}
@@ -98,6 +98,7 @@ func _ready():
 		f.close()
 
 	load_settings()
+	update_input_map()
 
 func _process(delta):
 	pass
@@ -116,9 +117,12 @@ func save_settings():
 
 func update_input_map():
 	var action_list = ["interact", "scoreboard", "taunt", "textchat", "voicechat", "forward", "backward", 
-	"left", "right", "sprint", "crouch", "prone", "crouch/prone", "jump", "vault", "jump/vault", "shoot", 
+	"left", "right", "sprint", "crouch", "prone", "crouch_prone", "jump", "vault", "jump_vault", "shoot", 
 	"aim", "reload", "primary", "secondary", "grenade", "ability", "tool", "melee"]
+
+	var actions_without_mode = [2, 3, 5, 6, 7, 8, 16, 18, 19, 20, 21, 22, 23]
 	var event
+	var new_key
 
 	# Iterates through the action list to remove all keybinds before reassigning them.
 	for i in action_list:
@@ -126,7 +130,34 @@ func update_input_map():
 			Input.action_release(i)
 		InputMap.action_erase_events(i)
 
-# I FOUND IT, I CAN CHANGE THE INPUTMAP THROUGH JSON WITH THIS!!!!!!!
-		#event = InputEventKey.new()
-		#event.keycode = KEY_R
-		#InputMap.action_add_event("forward", event)
+	for i in range(0, action_list.size()):
+		var action_str = action_list[i]
+
+		if i < 5:
+			if i in actions_without_mode:
+				new_key = settings_dict["keys"]["general"][action_str]
+			else:
+				new_key = settings_dict["keys"]["general"][action_str]["key"]
+		elif i < 16:
+			if i in actions_without_mode:
+				new_key = settings_dict["keys"]["movement"][action_str]
+			else:
+				new_key = settings_dict["keys"]["movement"][action_str]["key"]
+		else:
+			if i in actions_without_mode:
+				new_key = settings_dict["keys"]["combat"][action_str]
+			else:
+				new_key = settings_dict["keys"]["combat"][action_str]["key"]
+
+		if new_key is String:
+			new_key = OS.find_keycode_from_string(new_key)
+			event = InputEventKey.new()
+			event.set_physical_keycode(new_key)
+			InputMap.action_add_event(action_str, event)
+			continue
+
+		else:
+			event = InputEventMouseButton.new()
+			event.button_index = new_key
+			InputMap.action_add_event(action_str, event)
+			continue
