@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
 var sensitivity = 0.0025
-var speed
-var jump_velocity = 5
+var speed = 4
+var jump_velocity = 6
 var gravity = 9.8
 var direction
 var is_wallrunning
-var is_running
+var is_running = false
 var input_dir
 var wallrun_timeout = false
 var wall_direction
@@ -24,6 +24,8 @@ var wall_normal
 var same_wall = false
 var old_wall_normal
 var wall_normal_values
+var is_ads = false
+var is_paused = false
 
 # Creates a new bullet scene on call.
 var bullet = load("res://scenes/bullet.tscn")
@@ -37,20 +39,19 @@ var instance
 @onready var gun_barrel = $Neck/Camera3D/AssaultRifle/RayCast3D
 @onready var ammo_counter = $HUD/AmmoCounter
 @onready var reloading_icon = $HUD/Reloading
+@onready var sens_slider = $"HUD/Options Screen/Controls/Sensitivity"
 
 signal paused
-signal resumed
 
 # Handles mouse focus.
 func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		is_mouse_captured = true
-		resumed.emit()
-	elif event.is_action_pressed("ui_cancel"):
+	sensitivity = SettingsManager.settings_dict["controls"]["sensitivity"]
+
+	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		is_mouse_captured = false
 		paused.emit()
+		is_paused = true
 
 	# Rotates the camera.
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -78,7 +79,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handles jumping.
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and !is_paused:
 		if is_on_floor():
 			velocity.y = jump_velocity
 		elif double_jump and !is_on_a_wall:
@@ -91,17 +92,10 @@ func _physics_process(delta):
 	if is_on_floor() or is_on_a_wall:
 		double_jump = true
 
-	# Handles sprinting.
-	if Input.is_action_pressed("run"):
-		speed = 7
-		is_running = true
-	else:
-		speed = 4
-		is_running = false
-
 	# Moves the character IF they are not wallrunning.
 	if !is_wallrunning:
-		input_dir = Input.get_vector("left", "right", "forward", "backward")
+		if !is_paused:
+			input_dir = Input.get_vector("left", "right", "forward", "backward")
 		direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if is_on_floor():
 			if direction:
@@ -117,15 +111,9 @@ func _physics_process(delta):
 				velocity.x += direction.x * 0.02
 				velocity.z += direction.z * 0.02
 
-				# Maximum velocity while falling. NEEDS WORK, CAUSES BUG.
-				if velocity.x > 10:
-					velocity.x = 10
-				elif velocity.x < -10:
-					velocity.x = -10
-				if velocity.z > 10:
-					velocity.z = 10
-				elif velocity.z < -10:
-					velocity.z = -10
+				# Maximum velocity while falling. 
+				if velocity.length() > 20:
+					velocity = velocity.normalized() * 20
 
 	# Fires a bullet.
 	if Input.is_action_pressed("shoot") and is_mouse_captured and !is_reloading:
@@ -141,24 +129,25 @@ func _physics_process(delta):
 			ammo -= 1
 
 	# Aim down sights.
-	if Input.is_action_pressed("aim"):
+	if Input.is_action_pressed("aim") and !is_paused:
 		gun.position.x = 0
 		gun.position.y = -0.225
 		gun.position.z = -0.45
 		gun.rotation.y = 0
-		crosshair.visible = false
 		camera.fov = 70
+		is_ads = true
 	else:
 		gun.position.x = 0.25
 		gun.position.y = -0.3
 		gun.position.z = -0.6
 		gun.rotation.y = deg_to_rad(0.5)
 		camera.fov = 90
-		crosshair.visible = true
+		is_ads = false
 
 	move_and_slide()
 	wall_run()
 	HUD()
+	sprint()
 
 func wall_run():
 	if old_wall_normal == wall_normal:
@@ -319,10 +308,39 @@ func _on_wallrun_timer_timeout():
 	wallrun_timeout = true
 
 func HUD():
-
 	# Updates the ammo counter.
 	ammo_counter.text = "%s/30" % ammo
+	if is_mouse_captured and !is_ads:
+		crosshair.visible = true
+	else:
+		crosshair.visible = false
 
 func _on_hud_unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	is_mouse_captured = true
+	is_paused = false
+
+func sprint():
+	var settings = SettingsManager.settings_dict
+
+	# Hold to run
+	if settings["controls"]["sprint mode"] == 0:
+		if Input.is_action_pressed("sprint"):
+			speed = 8
+			is_running = true
+		else:
+			speed = 4
+			is_running = false
+	# Toggle sprint
+	elif settings["controls"]["sprint mode"] == 1:
+		# Replace velocity with something that checks if WASD is pressed
+		if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+			if Input.is_action_just_pressed("sprint") and !is_running:
+				is_running = true
+				speed = 8
+			elif Input.is_action_just_pressed("sprint") and is_running:
+				is_running = false
+				speed = 4
+		else:
+			is_running = false
+			speed = 4
