@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c74yeetbg6d2r"
-path.s3tc="res://.godot/imported/crosshair.png-8b182635149764aaded85e6f086ada69.s3tc.ctex"
+uid="uid://cpsost3ampad8"
+path.s3tc="res://.godot/imported/grass.jpg-3ca683e5a4ea3fb300157496012e0fc4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/crosshair.png"
-dest_files=["res://.godot/imported/crosshair.png-8b182635149764aaded85e6f086ada69.s3tc.ctex"]
+source_file="res://assets/images/grass.jpg"
+dest_files=["res://.godot/imported/grass.jpg-3ca683e5a4ea3fb300157496012e0fc4.s3tc.ctex"]
 
 [params]
 

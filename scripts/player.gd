@@ -3,7 +3,7 @@ extends CharacterBody3D
 var sensitivity = 0.0025
 var speed = 4
 var jump_velocity = 6
-var gravity = 9.8
+var gravity = 10.5
 var direction
 var is_wallrunning
 var is_running = false

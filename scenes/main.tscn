@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjkp5mlsj4a3y"]
+[gd_scene load_steps=19 format=3 uid="uid://cjkp5mlsj4a3y"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_y0vc5"]
 [ext_resource type="PackedScene" uid="uid://c34mnkfi2v3cn" path="res://scenes/player.tscn" id="2_bg6es"]
 [ext_resource type="PackedScene" uid="uid://dha45n3hc08fp" path="res://scenes/target.tscn" id="3_012ht"]
+[ext_resource type="Texture2D" uid="uid://cpsost3ampad8" path="res://assets/images/grass.jpg" id="3_cviiw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_42dvq"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,10 +21,12 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_goowk"]
 size = Vector3(150, 1, 150)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l41jt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cno0"]
+albedo_texture = ExtResource("3_cviiw")
+uv1_scale = Vector3(100, 100, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_eb8pm"]
-material = SubResource("StandardMaterial3D_l41jt")
+material = SubResource("StandardMaterial3D_3cno0")
 size = Vector3(150, 1, 150)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_twrlm"]
