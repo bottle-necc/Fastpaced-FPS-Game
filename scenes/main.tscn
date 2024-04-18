@@ -23,6 +23,7 @@ size = Vector3(150, 1, 150)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cno0"]
 albedo_texture = ExtResource("3_cviiw")
+anisotropy = 1.0
 uv1_scale = Vector3(100, 100, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_eb8pm"]

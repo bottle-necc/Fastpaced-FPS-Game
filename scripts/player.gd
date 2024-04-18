@@ -108,8 +108,8 @@ func _physics_process(delta):
 		# If the player is midair.
 		else:
 			if direction:
-				velocity.x += direction.x * 0.02
-				velocity.z += direction.z * 0.02
+				velocity.x += direction.x * 0.04
+				velocity.z += direction.z * 0.04
 
 				# Maximum velocity while falling. 
 				if velocity.length() > 20:
