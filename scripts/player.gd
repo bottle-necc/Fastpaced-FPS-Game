@@ -150,8 +150,6 @@ func _physics_process(delta):
 	sprint()
 
 func wall_run():
-	wall_run_update_direction()
-
 	if old_wall_normal == wall_normal:
 		same_wall = true
 
@@ -174,7 +172,7 @@ func wall_run():
 			wall_normal_values = get_wall_normal_from_rays()
 			if wall_normal_values != null:
 				direction = Vector3(wall_normal_values)
-				wall_normal = rad_to_deg(atan2(direction.z, direction.x)) + 90
+				wall_normal = rad_to_deg(atan2(direction.z, direction.x))
 
 			# Starts a timer until the player falls off the wall.
 			wallrun_timeout = false
@@ -211,28 +209,6 @@ func wall_run():
 		else:
 			old_wall_normal = NAN
 			same_wall = false
-
-func wall_run_update_direction() -> String:
-	var camera_direction = rad_to_deg(atan2(neck.transform.basis.x.z, neck.transform.basis.x.x))
-	var wall_direction := ""
-	var direction_calc := rad_to_deg(0)
-
-	# Runs when the player is on a wall
-	if wall_normal != null:
-		# Decides the direction the player should move relative to the walls normaldirection
-		direction_calc = camera_direction - wall_normal
-		direction_calc = normalize_angle(direction_calc)
-
-		if direction_calc > 0:
-			wall_direction = "right"
-		if direction_calc < 0: 
-			wall_direction = "left"
-
-	return wall_direction
-
-# Used to normalize angles into the -180 to 180 range
-func normalize_angle(value: float) -> float:
-	return fposmod(value + 180.0, 360.0) - 180.0
 
 # Sensitivity slider.
 func _on_h_slider_value_changed(value):
