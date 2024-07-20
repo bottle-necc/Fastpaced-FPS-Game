@@ -5,7 +5,7 @@ var speed = 4
 var jump_velocity = 6
 var gravity = 10.5
 var direction
-var is_wallrunning
+var is_wallrunning = false
 var is_running = false
 var input_dir
 var wall_direction
@@ -18,8 +18,6 @@ var is_on_l_wall # Left
 var is_on_r_wall # Right
 var is_on_b_wall # Back
 var wall_jump
-var wall_normal
-var wall_normal_values
 var is_ads = false
 var is_paused = false
 
@@ -146,47 +144,41 @@ func _physics_process(delta):
 	sprint()
 
 func wall_run():
+	var wall_direction
+	var wall_normal_values
+	var wall_parallel
+
 	if is_on_l_wall or is_on_r_wall or is_on_b_wall:
 		is_on_a_wall = true
 	else:
 		is_on_a_wall = false
 
-	if is_on_a_wall and Input.is_action_pressed("forward") and is_running and !is_on_floor():
-		# Runs on the first instance.
+	wall_normal_values = get_wall_normal_from_rays()
+	if wall_normal_values != null:
+		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized() * 1.5
+
+
+# Checks if the wallrunning requirements are met and handles it
+	if is_on_a_wall and is_running and !is_on_floor() and Input.is_action_pressed("forward"):
 		if !is_wallrunning:
 			is_wallrunning = true
 
-			# Decides the velocity of the player.
-			direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-			velocity.x = direction.x * speed * 1.75
-			velocity.z = direction.z * speed * 1.75
+			if is_on_l_wall and !is_on_r_wall:
+				wall_direction = "left"
+			elif !is_on_l_wall and is_on_r_wall:
+				wall_direction = "right"
 
-			# Decides the direction of the wall normal, used for walljumping.
-			wall_normal_values = get_wall_normal_from_rays()
-			if wall_normal_values != null:
-				direction = Vector3(wall_normal_values)
-				wall_normal = rad_to_deg(atan2(direction.z, direction.x))
-
-		# Handles walljumping.
-		if Input.is_action_just_pressed("jump"):
-			velocity += direction * 7.5
-			velocity.y = 7.5
-			wall_jump = true
-
-		# Leans the head away from the wall.
-		if wall_direction == "r":
-			camera.rotation.z = deg_to_rad(5)
-		elif wall_direction == "l":
-			camera.rotation.z = deg_to_rad(-5)
-
-		if !wall_jump:
-			velocity.y = 0
-
-	# Runs when the player stops wallrunning.
+		if wall_direction == "left":
+			velocity = Vector3.ZERO
+			velocity.x = wall_parallel.x * speed
+			velocity.z = wall_parallel.z * speed
+		elif wall_direction == "right":
+			velocity = Vector3.ZERO
+			velocity.x = wall_parallel.x * speed * -1
+			velocity.z = wall_parallel.z * speed * -1
+		velocity.y = 0
 	else:
-		camera.rotation.z = 0
 		is_wallrunning = false
-		wall_jump = false
 
 # Sensitivity slider.
 func _on_h_slider_value_changed(value):
