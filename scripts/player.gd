@@ -8,14 +8,12 @@ var direction
 var is_wallrunning
 var is_running = false
 var input_dir
-var wallrun_timeout = false
 var wall_direction
 var double_jump = true
 var is_mouse_captured
 var ammo = 30
 var is_reloading = false
 var is_on_a_wall
-var are_rays_detecting
 var is_on_l_wall # Left
 var is_on_r_wall # Right
 var is_on_b_wall # Back
@@ -189,7 +187,6 @@ func wall_run():
 		camera.rotation.z = 0
 		is_wallrunning = false
 		wall_jump = false
-		wallrun_timeout = false
 
 # Sensitivity slider.
 func _on_h_slider_value_changed(value):
