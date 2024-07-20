@@ -21,8 +21,6 @@ var is_on_r_wall # Right
 var is_on_b_wall # Back
 var wall_jump
 var wall_normal
-var same_wall = false
-var old_wall_normal
 var wall_normal_values
 var is_ads = false
 var is_paused = false
@@ -150,15 +148,12 @@ func _physics_process(delta):
 	sprint()
 
 func wall_run():
-	if old_wall_normal == wall_normal:
-		same_wall = true
-
 	if is_on_l_wall or is_on_r_wall or is_on_b_wall:
 		is_on_a_wall = true
 	else:
 		is_on_a_wall = false
 
-	if is_on_a_wall and Input.is_action_pressed("forward") and is_running and !wallrun_timeout and !same_wall and !is_on_floor():
+	if is_on_a_wall and Input.is_action_pressed("forward") and is_running and !is_on_floor():
 		# Runs on the first instance.
 		if !is_wallrunning:
 			is_wallrunning = true
@@ -168,15 +163,11 @@ func wall_run():
 			velocity.x = direction.x * speed * 1.75
 			velocity.z = direction.z * speed * 1.75
 
-			# Decides the direction of the wall normal, used for walljumping and blocking wallrun-chaining.
+			# Decides the direction of the wall normal, used for walljumping.
 			wall_normal_values = get_wall_normal_from_rays()
 			if wall_normal_values != null:
 				direction = Vector3(wall_normal_values)
 				wall_normal = rad_to_deg(atan2(direction.z, direction.x))
-
-			# Starts a timer until the player falls off the wall.
-			wallrun_timeout = false
-			$WallrunTimer.start() 
 
 		# Handles walljumping.
 		if Input.is_action_just_pressed("jump"):
@@ -199,16 +190,6 @@ func wall_run():
 		is_wallrunning = false
 		wall_jump = false
 		wallrun_timeout = false
-		$WallrunTimer.stop()
-		
-		# Saves the wall normal direction in order to prevent the use of the same wall
-		if !is_on_floor():
-			if wall_normal != null:
-				old_wall_normal = wall_normal
-				wall_normal = null
-		else:
-			old_wall_normal = NAN
-			same_wall = false
 
 # Sensitivity slider.
 func _on_h_slider_value_changed(value):
@@ -242,7 +223,7 @@ func _on_check_back_no_hit():
 
 # In the future maybe rewrite this with a for-loop. Current code isn't well made but works.
 func get_wall_normal_from_rays():
-	var wall_normal
+	var wall_normal_val
 
 	if is_on_l_wall and !is_on_r_wall:
 		var left = $Neck/CheckLeft
@@ -254,19 +235,19 @@ func get_wall_normal_from_rays():
 		var leftDD = $Neck/CheckLeft/CheckLD/CheckLDD
 
 		if leftUU.is_colliding():
-			wall_normal = leftUU.get_collision_normal()
+			wall_normal_val = leftUU.get_collision_normal()
 		elif leftU.is_colliding():
-			wall_normal = leftU.get_collision_normal()
+			wall_normal_val = leftU.get_collision_normal()
 		elif leftUD.is_colliding():
-			wall_normal = leftUD.get_collision_normal()
+			wall_normal_val = leftUD.get_collision_normal()
 		elif left.is_colliding():
-			wall_normal = left.get_collision_normal()
+			wall_normal_val = left.get_collision_normal()
 		elif leftDU.is_colliding():
-			wall_normal = leftDU.get_collision_normal()
+			wall_normal_val = leftDU.get_collision_normal()
 		elif leftD.is_colliding():
-			wall_normal = leftD.get_collision_normal()
+			wall_normal_val = leftD.get_collision_normal()
 		elif leftDD.is_colliding():
-			wall_normal = leftDD.get_collision_normal()
+			wall_normal_val = leftDD.get_collision_normal()
 
 	elif !is_on_l_wall and is_on_r_wall:
 		var right = $Neck/CheckRight
@@ -278,34 +259,30 @@ func get_wall_normal_from_rays():
 		var rightDD = $Neck/CheckRight/CheckRD/CheckRDD
 
 		if rightUU.is_colliding():
-			wall_normal = rightUU.get_collision_normal()
+			wall_normal_val = rightUU.get_collision_normal()
 		elif rightU.is_colliding():
-			wall_normal = rightU.get_collision_normal()
+			wall_normal_val = rightU.get_collision_normal()
 		elif rightUD.is_colliding():
-			wall_normal = rightUD.get_collision_normal()
+			wall_normal_val = rightUD.get_collision_normal()
 		elif right.is_colliding():
-			wall_normal = right.get_collision_normal()
+			wall_normal_val = right.get_collision_normal()
 		elif rightDU.is_colliding():
-			wall_normal = rightDU.get_collision_normal()
+			wall_normal_val = rightDU.get_collision_normal()
 		elif rightD.is_colliding():
-			wall_normal = rightD.get_collision_normal()
+			wall_normal_val = rightD.get_collision_normal()
 		elif rightDD.is_colliding():
-			wall_normal = rightDD.get_collision_normal()
+			wall_normal_val = rightDD.get_collision_normal()
 
 	elif is_on_b_wall:
 		var back = $Neck/CheckBack
 
 		if back.is_colliding():
-			wall_normal = back.get_collision_normal()
+			wall_normal_val = back.get_collision_normal()
 	
 	else:
-		wall_normal = null
+		wall_normal_val = null
 
-	return wall_normal
-
-func _on_wallrun_timer_timeout():
-	$WallrunTimer.stop()
-	wallrun_timeout = true
+	return wall_normal_val
 
 func HUD():
 	# Updates the ammo counter.

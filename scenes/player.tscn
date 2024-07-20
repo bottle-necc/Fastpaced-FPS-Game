@@ -138,9 +138,6 @@ script = ExtResource("16_lm711")
 [node name="Reload" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="WallrunTimer" type="Timer" parent="."]
-wait_time = 2.5
-
 [node name="HUD" parent="." instance=ExtResource("19_v3hb3")]
 
 [node name="Crosshair" type="TextureRect" parent="HUD"]
@@ -218,5 +215,4 @@ vertical_alignment = 2
 [connection signal="hit" from="Neck/CheckLeft/CheckLD/CheckLDD" to="Neck/CheckLeft/CheckLD" method="_on_check_ldd_hit"]
 [connection signal="no_hit" from="Neck/CheckLeft/CheckLD/CheckLDD" to="Neck/CheckLeft/CheckLD" method="_on_check_ldd_no_hit"]
 [connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
-[connection signal="timeout" from="WallrunTimer" to="." method="_on_wallrun_timer_timeout"]
 [connection signal="unpause" from="HUD" to="." method="_on_hud_unpause"]
