@@ -148,28 +148,26 @@ func _physics_process(delta):
 	sprint()
 
 func wall_run():
-	wall_run_update_direction()
-
 	if is_on_l_wall or is_on_r_wall or is_on_b_wall:
 		is_on_a_wall = true
 	else:
 		is_on_a_wall = false
 
 	if is_on_a_wall and Input.is_action_pressed("forward") and is_running and !is_on_floor():
-		# Decides the velocity of the player.
-		
-		# REPLACE: make it dependant on the walls angle instead of player direction
-		direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		
-		
-		velocity.x = direction.x * speed * 1.75
-		velocity.z = direction.z * speed * 1.75
+		# Runs on the first instance.
+		if !is_wallrunning:
+			is_wallrunning = true
 
-		# Decides the direction of the wall normal, used for walljumping and blocking wallrun-chaining.
-		wall_normal_values = get_wall_normal_from_rays()
-		if wall_normal_values != null:
-			direction = Vector3(wall_normal_values)
-			wall_normal = rad_to_deg(atan2(direction.z, direction.x)) + 90
+			# Decides the velocity of the player.
+			direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			velocity.x = direction.x * speed * 1.75
+			velocity.z = direction.z * speed * 1.75
+
+			# Decides the direction of the wall normal, used for walljumping.
+			wall_normal_values = get_wall_normal_from_rays()
+			if wall_normal_values != null:
+				direction = Vector3(wall_normal_values)
+				wall_normal = rad_to_deg(atan2(direction.z, direction.x))
 
 		# Handles walljumping.
 		if Input.is_action_just_pressed("jump"):
@@ -189,29 +187,9 @@ func wall_run():
 	# Runs when the player stops wallrunning.
 	else:
 		camera.rotation.z = 0
+		is_wallrunning = false
 		wall_jump = false
-
-func wall_run_update_direction() -> String:
-	var camera_direction = rad_to_deg(atan2(neck.transform.basis.x.z, neck.transform.basis.x.x))
-	var wall_direction := ""
-	var direction_calc := rad_to_deg(0)
-
-	# Runs when the player is on a wall
-	if wall_normal != null:
-		# Decides the direction the player should move relative to the walls normaldirection
-		direction_calc = camera_direction - wall_normal
-		direction_calc = normalize_angle(direction_calc)
-
-		if direction_calc > 0:
-			wall_direction = "right"
-		if direction_calc < 0: 
-			wall_direction = "left"
-
-	return wall_direction
-
-# Used to normalize angles into the -180 to 180 range
-func normalize_angle(value: float) -> float:
-	return fposmod(value + 180.0, 360.0) - 180.0
+		wallrun_timeout = false
 
 # Sensitivity slider.
 func _on_h_slider_value_changed(value):
