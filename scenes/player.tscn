@@ -40,7 +40,7 @@ mesh = SubResource("CapsuleMesh_us4qs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
-fov = 90.0
+fov = 105.0
 
 [node name="AssaultRifle" parent="Neck/Camera3D" instance=ExtResource("2_5yvic")]
 transform = Transform3D(0.5, 0, 0, 0, 0.499524, -0.0218097, 0, 0.0218097, 0.499524, 0, 0, 0)
