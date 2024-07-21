@@ -56,7 +56,7 @@ size = Vector3(25, 25, 0.5)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oi5cx"]
 height = 20.0
-radius = 30.0
+radius = 15.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7h10d"]
 
@@ -129,16 +129,6 @@ shape = SubResource("CylinderShape3D_oi5cx")
 transform = Transform3D(30, 0, 0, 0, 10, 0, 0, 0, 30, 0, 0, 0)
 mesh = SubResource("CylinderMesh_7h10d")
 
-[node name="Cylinder2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.5536, 9.32632, -49.0268)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cylinder2"]
-shape = SubResource("CylinderShape3D_oi5cx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinder2"]
-transform = Transform3D(60, 0, 0, 0, 10, 0, 0, 0, 60, 0, 0, 0)
-mesh = SubResource("CylinderMesh_7h10d")
-
 [node name="CurvedWall" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6389, 7.33629, -28.3128)
 operation = 1
@@ -165,5 +155,12 @@ offset_top = 15.0
 offset_right = 151.0
 offset_bottom = 65.0
 text = "Spawn Enemy"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.551, 7.38177, -38.8535)
+use_collision = true
+radius = 30.0
+height = 15.0
+sides = 64
 
 [connection signal="pressed" from="old_HUD/SpawnEnemy" to="." method="_on_spawn_enemy_pressed"]

@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 var sensitivity = 0.0025
 var speed = 4
-var jump_velocity = 6
-var gravity = 10.5
+var jump_velocity = 4.5
+var gravity = 9.82
 var direction
 var is_wallrunning = false
 var is_running = false
@@ -53,7 +53,7 @@ func _unhandled_input(event):
 			neck.rotate_y(-event.relative.x * sensitivity)
 			camera.rotate_x(-event.relative.y * sensitivity)
 			# Limit to up and down rotation.
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
 
 func _physics_process(delta):
 	# If the player falls outside the map, respawn.
@@ -76,7 +76,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and !is_paused:
 		if is_on_floor():
 			velocity.y = jump_velocity
-		elif double_jump and !is_on_a_wall:
+		elif double_jump and !is_wallrunning:
 			velocity.y = jump_velocity
 			velocity.x = direction.x * speed / 1.5 + velocity.x
 			velocity.z = direction.z * speed / 1.5 + velocity.z
@@ -117,8 +117,8 @@ func _physics_process(delta):
 			instance.position = gun_barrel.global_position
 			instance.transform.basis = gun_barrel.global_transform.basis
 			camera.rotation.x += deg_to_rad(0.75)
-			if camera.rotation.x > deg_to_rad(75):
-				camera.rotation.x = deg_to_rad(75)
+			if camera.rotation.x > deg_to_rad(85):
+				camera.rotation.x = deg_to_rad(85)
 			get_parent().add_child(instance)
 			ammo -= 1
 
@@ -155,8 +155,7 @@ func wall_run():
 
 	wall_normal_values = get_wall_normal_from_rays()
 	if wall_normal_values != null:
-		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized() * 1.5
-
+		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized()
 
 # Checks if the wallrunning requirements are met and handles it
 	if is_on_a_wall and is_running and !is_on_floor() and Input.is_action_pressed("forward"):
@@ -168,15 +167,18 @@ func wall_run():
 			elif !is_on_l_wall and is_on_r_wall:
 				wall_direction = "right"
 
+		# Smoothly nullifies the vertical velocity if velocity.y is negative
+		if velocity.y < 0:
+			velocity.y += 0.075
+
+		# Assigns velocity and flips depending on direction
 		if wall_direction == "left":
-			velocity = Vector3.ZERO
-			velocity.x = wall_parallel.x * speed
+			velocity.x = wall_parallel.x * speed 
 			velocity.z = wall_parallel.z * speed
 		elif wall_direction == "right":
-			velocity = Vector3.ZERO
 			velocity.x = wall_parallel.x * speed * -1
 			velocity.z = wall_parallel.z * speed * -1
-		velocity.y = 0
+
 	else:
 		is_wallrunning = false
 
