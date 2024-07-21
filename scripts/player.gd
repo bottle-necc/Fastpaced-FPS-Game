@@ -21,7 +21,7 @@ var wall_jump
 var is_ads = false
 var is_paused = false
 
-# Creates a new bullet scene on call.
+# Creates a new bullet scene on call
 var bullet = load("res://scenes/bullet.tscn")
 var instance
 
@@ -37,7 +37,7 @@ var instance
 
 signal paused
 
-# Handles mouse focus.
+# Handles mouse focus
 func _unhandled_input(event):
 	sensitivity = SettingsManager.settings_dict["controls"]["sensitivity"]
 
@@ -47,32 +47,32 @@ func _unhandled_input(event):
 		paused.emit()
 		is_paused = true
 
-	# Rotates the camera.
+	# Rotates the camera
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			neck.rotate_y(-event.relative.x * sensitivity)
 			camera.rotate_x(-event.relative.y * sensitivity)
-			# Limit to up and down rotation.
+			# Limit to up and down rotation
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
 
 func _physics_process(delta):
-	# If the player falls outside the map, respawn.
+	# If the player falls outside the map, respawn
 	if position.y < -10:
 		position.x = 0
 		position.y = 2
 		position.z = 0
 
-	# Reloads the gun.
+	# Reloads the gun
 	if Input.is_action_just_pressed("reload") and ammo < 30:
 		$Reload.start()
 		is_reloading = true
 		reloading_icon.text = "Reloading..."
 
-	# Creates gravity.
+	# Creates gravity
 	if !is_on_floor():
 		velocity.y -= gravity * delta
 
-	# Handles jumping.
+	# Handles jumping
 	if Input.is_action_just_pressed("jump") and !is_paused:
 		if is_on_floor():
 			velocity.y = jump_velocity
@@ -82,11 +82,11 @@ func _physics_process(delta):
 			velocity.z = direction.z * speed / 1.5 + velocity.z
 			double_jump = false
 
-	# Regenerates double jump when on a surface.
+	# Regenerates double jump when on a surface
 	if is_on_floor() or is_on_a_wall:
 		double_jump = true
 
-	# Moves the character IF they are not wallrunning.
+	# Moves the character IF they are not wallrunning
 	if !is_wallrunning:
 		if !is_paused:
 			input_dir = Input.get_vector("left", "right", "forward", "backward")
@@ -99,17 +99,17 @@ func _physics_process(delta):
 				velocity.x = move_toward(velocity.x, 0, speed)
 				velocity.z = move_toward(velocity.z, 0, speed)
 
-		# If the player is midair.
+		# If the player is midair
 		else:
 			if direction:
 				velocity.x += direction.x * 0.04
 				velocity.z += direction.z * 0.04
 
-				# Maximum velocity while falling. 
+				# Maximum velocity while falling
 				if velocity.length() > 20:
 					velocity = velocity.normalized() * 20
 
-	# Fires a bullet.
+	# Fires a bullet
 	if Input.is_action_pressed("shoot") and is_mouse_captured and !is_reloading:
 		if !gun_anim.is_playing() and ammo > 0:
 			gun_anim.play("recoil")
@@ -122,7 +122,7 @@ func _physics_process(delta):
 			get_parent().add_child(instance)
 			ammo -= 1
 
-	# Aim down sights.
+	# Aim down sights
 	if Input.is_action_pressed("aim") and !is_paused:
 		gun.position.x = 0
 		gun.position.y = -0.225
@@ -155,9 +155,9 @@ func wall_run():
 
 	wall_normal_values = get_wall_normal_from_rays()
 	if wall_normal_values != null:
-		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized()
+		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized() * 1.75
 
-# Checks if the wallrunning requirements are met and handles it
+	# Checks if the wallrunning requirements are met and handles it
 	if is_on_a_wall and is_running and !is_on_floor() and Input.is_action_pressed("forward"):
 		if !is_wallrunning:
 			is_wallrunning = true
@@ -179,11 +179,16 @@ func wall_run():
 			velocity.x = wall_parallel.x * speed * -1
 			velocity.z = wall_parallel.z * speed * -1
 
+		# Handles walljumping
+		if Input.is_action_just_pressed("jump") and velocity.y < 1 and velocity.y > -1:
+			velocity += wall_normal_values * 5
+			velocity.y = 6
+
 	else:
 		is_wallrunning = false
 
-# Sensitivity slider.
 func _on_h_slider_value_changed(value):
+	# Sensitivity slider
 	sensitivity = value * 0.0001
 
 func _on_check_right_no_hit():
@@ -212,7 +217,7 @@ func _on_check_back_hit():
 func _on_check_back_no_hit():
 	is_on_b_wall = false
 
-# In the future maybe rewrite this with a for-loop. Current code isn't well made but works.
+# In the future maybe rewrite this with a for-loop. Current code isn't well made but works
 func get_wall_normal_from_rays():
 	var wall_normal_val
 
@@ -276,7 +281,7 @@ func get_wall_normal_from_rays():
 	return wall_normal_val
 
 func HUD():
-	# Updates the ammo counter.
+	# Updates the ammo counter
 	ammo_counter.text = "%s/30" % ammo
 	if is_mouse_captured and !is_ads:
 		crosshair.visible = true

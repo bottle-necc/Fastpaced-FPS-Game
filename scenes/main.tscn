@@ -19,7 +19,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_goowk"]
-size = Vector3(150, 1, 150)
+size = Vector3(150, 1, 300)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cno0"]
 albedo_texture = ExtResource("3_cviiw")
@@ -28,7 +28,7 @@ uv1_scale = Vector3(100, 100, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_eb8pm"]
 material = SubResource("StandardMaterial3D_3cno0")
-size = Vector3(150, 1, 150)
+size = Vector3(150, 1, 300)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_twrlm"]
 size = Vector3(50, 25, 1)
@@ -72,7 +72,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -75)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_goowk")
@@ -160,6 +160,13 @@ text = "Spawn Enemy"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.551, 7.38177, -38.8535)
 use_collision = true
 radius = 30.0
+height = 15.0
+sides = 64
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1.44499, 0, 0.691374, 0, 1, 0, -1.38275, 0, 0.722497, 48.6432, 7.06537, 38.6975)
+use_collision = true
+radius = 15.0
 height = 15.0
 sides = 64
 
