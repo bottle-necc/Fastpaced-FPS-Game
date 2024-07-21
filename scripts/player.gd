@@ -184,23 +184,19 @@ func wall_run():
 			velocity.y = 6
 			wall_jump = true
 
-		print(velocity)
-
 		# Tilts the camera
-#		if wall_direction == "right" and camera.rotation.z < deg_to_rad(45):
-#			camera.rotation.z += 0.002
-#		elif wall_direction == "left" and camera.rotation.z > deg_to_rad(-45):
-#			camera.rotation.z -= 0.002
+		if wall_direction == "right" and camera.rotation.z < deg_to_rad(5):
+			camera.rotation.z += 0.003
+		elif wall_direction == "left" and camera.rotation.z > deg_to_rad(-5):
+			camera.rotation.z -= 0.003
 
 	else:
 		is_wallrunning = false
 		wall_jump = false
-#		if camera.rotation.z > 0.1:
-#			camera.rotation.z -= 0.002
-#		elif camera.rotation.z < -0.1:
-#			camera.rotation.z += 0.002
-#		else:
-#			camera.rotation.z = 0
+		if camera.rotation.z > 0:
+			camera.rotation.z -= 0.003
+		elif camera.rotation.z < 0:
+			camera.rotation.z += 0.003
 
 func _on_h_slider_value_changed(value):
 	# Sensitivity slider
