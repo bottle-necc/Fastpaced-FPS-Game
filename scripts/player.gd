@@ -20,6 +20,7 @@ var is_on_b_wall # Back
 var wall_jump
 var is_ads = false
 var is_paused = false
+var wall_parallel
 
 # Creates a new bullet scene on call
 var bullet = load("res://scenes/bullet.tscn")
@@ -144,9 +145,7 @@ func _physics_process(delta):
 	sprint()
 
 func wall_run():
-	var wall_direction
 	var wall_normal_values
-	var wall_parallel
 
 	if is_on_l_wall or is_on_r_wall or is_on_b_wall:
 		is_on_a_wall = true
@@ -156,6 +155,7 @@ func wall_run():
 	wall_normal_values = get_wall_normal_from_rays()
 	if wall_normal_values != null:
 		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized() * 1.75
+	print(wall_normal_values)
 
 	# Checks if the wallrunning requirements are met and handles it
 	if is_on_a_wall and is_running and !is_on_floor() and Input.is_action_pressed("forward"):
@@ -184,8 +184,20 @@ func wall_run():
 			velocity += wall_normal_values * 5
 			velocity.y = 6
 
+		# Tilts the camera
+#		if wall_direction == "right" and camera.rotation.z < deg_to_rad(45):
+#			camera.rotation.z += 0.002
+#		elif wall_direction == "left" and camera.rotation.z > deg_to_rad(-45):
+#			camera.rotation.z -= 0.002
+
 	else:
 		is_wallrunning = false
+#		if camera.rotation.z > 0.1:
+#			camera.rotation.z -= 0.002
+#		elif camera.rotation.z < -0.1:
+#			camera.rotation.z += 0.002
+#		else:
+#			camera.rotation.z = 0
 
 func _on_h_slider_value_changed(value):
 	# Sensitivity slider
@@ -198,11 +210,9 @@ func _on_check_left_no_hit():
 	is_on_l_wall = false
 
 func _on_check_right_hit():
-	wall_direction = "r"
 	is_on_r_wall = true
 
 func _on_check_left_hit():
-	wall_direction = "l"
 	is_on_l_wall = true
 
 func _on_reload_timeout():
