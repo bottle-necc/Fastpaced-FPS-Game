@@ -193,10 +193,12 @@ func wall_run():
 	else:
 		is_wallrunning = false
 		wall_jump = false
-		if camera.rotation.z > 0:
+		if camera.rotation.z > 0.002:
 			camera.rotation.z -= 0.003
-		elif camera.rotation.z < 0:
+		elif camera.rotation.z < -0.002:
 			camera.rotation.z += 0.003
+		else:
+			camera.rotation.z = 0
 
 func _on_h_slider_value_changed(value):
 	# Sensitivity slider
