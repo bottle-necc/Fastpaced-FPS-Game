@@ -21,6 +21,7 @@ var wall_jump
 var is_ads = false
 var is_paused = false
 var wall_parallel
+var wall_normal_values
 
 # Creates a new bullet scene on call
 var bullet = load("res://scenes/bullet.tscn")
@@ -145,8 +146,6 @@ func _physics_process(delta):
 	sprint()
 
 func wall_run():
-	var wall_normal_values
-
 	if is_on_l_wall or is_on_r_wall or is_on_b_wall:
 		is_on_a_wall = true
 	else:
@@ -155,7 +154,6 @@ func wall_run():
 	wall_normal_values = get_wall_normal_from_rays()
 	if wall_normal_values != null:
 		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized() * 1.75
-	print(wall_normal_values)
 
 	# Checks if the wallrunning requirements are met and handles it
 	if is_on_a_wall and is_running and !is_on_floor() and Input.is_action_pressed("forward"):
@@ -172,17 +170,21 @@ func wall_run():
 			velocity.y += 0.075
 
 		# Assigns velocity and flips depending on direction
-		if wall_direction == "left":
+		if wall_direction == "left" and !wall_jump:
 			velocity.x = wall_parallel.x * speed 
 			velocity.z = wall_parallel.z * speed
-		elif wall_direction == "right":
+		elif wall_direction == "right" and !wall_jump:
 			velocity.x = wall_parallel.x * speed * -1
 			velocity.z = wall_parallel.z * speed * -1
 
+
 		# Handles walljumping
-		if Input.is_action_just_pressed("jump") and velocity.y < 1 and velocity.y > -1:
+		if Input.is_action_just_pressed("jump") and abs(velocity.y) < 1:
 			velocity += wall_normal_values * 5
 			velocity.y = 6
+			wall_jump = true
+
+		print(velocity)
 
 		# Tilts the camera
 #		if wall_direction == "right" and camera.rotation.z < deg_to_rad(45):
@@ -192,6 +194,7 @@ func wall_run():
 
 	else:
 		is_wallrunning = false
+		wall_jump = false
 #		if camera.rotation.z > 0.1:
 #			camera.rotation.z -= 0.002
 #		elif camera.rotation.z < -0.1:
