@@ -36,6 +36,7 @@ var instance
 @onready var ammo_counter = $HUD/AmmoCounter
 @onready var reloading_icon = $HUD/Reloading
 @onready var sens_slider = $"HUD/Options Screen/Controls/Sensitivity"
+@onready var player_model = $PlayerModel
 
 signal paused
 
@@ -53,6 +54,7 @@ func _unhandled_input(event):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			neck.rotate_y(-event.relative.x * sensitivity)
+			player_model.rotate_y(-event.relative.x * sensitivity)
 			camera.rotate_x(-event.relative.y * sensitivity)
 			# Limit to up and down rotation
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))

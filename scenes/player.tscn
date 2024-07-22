@@ -19,10 +19,9 @@
 [ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLUD.gd" id="15_ugk35"]
 [ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLDD.gd" id="16_lm711"]
 [ext_resource type="PackedScene" uid="uid://cx0jp7l1mjrjr" path="res://scenes/hud.tscn" id="19_v3hb3"]
+[ext_resource type="PackedScene" uid="uid://dpbpa3rcj3rm7" path="res://assets/models/player-model.glb" id="20_vg3w6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ibeww"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_us4qs"]
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -30,16 +29,17 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_jjlro")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionEnvironment" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ibeww")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_us4qs")
+[node name="PlayerModel" parent="." instance=ExtResource("20_vg3w6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
 [node name="Neck" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.283987, -0.135365)
 fov = 105.0
 
 [node name="AssaultRifle" parent="Neck/Camera3D" instance=ExtResource("2_5yvic")]
@@ -47,12 +47,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.499524, -0.0218097, 0, 0.0218097, 0.4995
 
 [node name="CheckBack" type="RayCast3D" parent="Neck"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -25, 1, -4.37114e-08, 8.81117e-20, -4.37114e-08, -1, -1.09278e-06, 0, -0.5, 0)
+visible = false
 target_position = Vector3(0, -0.55, 0)
 collide_with_areas = true
 script = ExtResource("4_y4t68")
 
 [node name="CheckRight" type="RayCast3D" parent="Neck"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 25, 0, -0.5, 0)
+visible = false
 target_position = Vector3(0, -0.55, 0)
 collide_with_areas = true
 script = ExtResource("5_mnfpe")
@@ -95,6 +97,7 @@ script = ExtResource("9_y6wpo")
 
 [node name="CheckLeft" type="RayCast3D" parent="Neck"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 25, 0, -0.5, 0)
+visible = false
 target_position = Vector3(0, -0.55, 0)
 collide_with_areas = true
 script = ExtResource("8_8ofk6")
