@@ -60,7 +60,6 @@ func _unhandled_input(event):
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
 
 func _physics_process(delta):
-	print(velocity.length())
 	# If the player falls outside the map, respawn
 	if position.y < -10:
 		position.x = 0
