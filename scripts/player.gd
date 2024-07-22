@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var sensitivity = 0.0025
-var speed = 4
+var speed = 4.5
 var jump_velocity = 4.5
 var gravity = 9.82
 var direction
@@ -60,6 +60,7 @@ func _unhandled_input(event):
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
 
 func _physics_process(delta):
+	print(velocity.length())
 	# If the player falls outside the map, respawn
 	if position.y < -10:
 		position.x = 0
@@ -87,7 +88,7 @@ func _physics_process(delta):
 			double_jump = false
 
 	# Regenerates double jump when on a surface
-	if is_on_floor() or is_on_a_wall:
+	if is_on_floor() or is_wallrunning:
 		double_jump = true
 
 	# Moves the character IF they are not wallrunning
@@ -155,7 +156,7 @@ func wall_run():
 
 	wall_normal_values = get_wall_normal_from_rays()
 	if wall_normal_values != null:
-		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized() * 1.75
+		wall_parallel = Vector3(wall_normal_values.z, 0, -wall_normal_values.x).normalized() * 1.66667
 
 	# Checks if the wallrunning requirements are met and handles it
 	if is_on_a_wall and is_running and !is_on_floor() and Input.is_action_pressed("forward"):
@@ -312,10 +313,10 @@ func sprint():
 	# Hold to run
 	if settings["controls"]["sprint mode"] == 0:
 		if Input.is_action_pressed("sprint"):
-			speed = 8
+			speed = 9
 			is_running = true
 		else:
-			speed = 4
+			speed = 4.5
 			is_running = false
 	# Toggle sprint
 	elif settings["controls"]["sprint mode"] == 1:
@@ -323,10 +324,10 @@ func sprint():
 		if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 			if Input.is_action_just_pressed("sprint") and !is_running:
 				is_running = true
-				speed = 8
+				speed = 9
 			elif Input.is_action_just_pressed("sprint") and is_running:
 				is_running = false
-				speed = 4
+				speed = 4.5
 		else:
 			is_running = false
-			speed = 4
+			speed = 4.5
