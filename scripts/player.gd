@@ -22,6 +22,9 @@ var is_ads = false
 var is_paused = false
 var wall_parallel
 var wall_normal_values
+var player_model
+var skeleton
+var bone_idx
 
 # Creates a new bullet scene on call
 var bullet = load("res://scenes/bullet.tscn")
@@ -36,9 +39,18 @@ var instance
 @onready var ammo_counter = $HUD/AmmoCounter
 @onready var reloading_icon = $HUD/Reloading
 @onready var sens_slider = $"HUD/Options Screen/Controls/Sensitivity"
-@onready var player_model = $PlayerModel
+@onready var player_model_scene = preload("res://assets/models/player-model.glb")
 
 signal paused
+
+func _ready():
+	# Sets up the player model
+	player_model = player_model_scene.instantiate()
+	add_child(player_model)
+	player_model.rotate_y(PI)
+	player_model.position.y -= 1
+	skeleton = player_model.get_node("Armature").get_node("Skeleton3D")
+	bone_idx = skeleton.find_bone("neck")
 
 # Handles mouse focus
 func _unhandled_input(event):
@@ -56,6 +68,16 @@ func _unhandled_input(event):
 			neck.rotate_y(-event.relative.x * sensitivity)
 			player_model.rotate_y(-event.relative.x * sensitivity)
 			camera.rotate_x(-event.relative.y * sensitivity)
+
+# possible solution
+# https://www.reddit.com/r/godot/comments/17bhmaw/rotate_a_3d_bone_around_the_global_y_axis_using/
+
+			# Rotates the player model head
+			var rotation = Basis().rotated(Vector3.RIGHT, -event.relative.y * sensitivity)
+			var current_transform = skeleton.get_bone_global_pose(bone_idx)
+			var new_transform = Transform3D(rotation, current_transform.origin)
+			skeleton.set_bone_global_pose_override(bone_idx, new_transform, 1, false)
+
 			# Limit to up and down rotation
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
 
@@ -330,3 +352,6 @@ func sprint():
 		else:
 			is_running = false
 			speed = 4.5
+
+func rotate_bone(bone_name, axis, value):
+	pass

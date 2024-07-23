@@ -35,7 +35,7 @@ shape = SubResource("CapsuleShape3D_ibeww")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32508, 0.283987, 0.617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.283987, -0.135365)
 fov = 105.0
 
 [node name="AssaultRifle" parent="Neck/Camera3D" instance=ExtResource("2_5yvic")]
