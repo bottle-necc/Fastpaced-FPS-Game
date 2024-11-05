@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var sensitivity = 0.0025
-var speed = 4.5
+var speed = 3
 var jump_velocity = 4.5
 var gravity = 9.82
 var direction
@@ -25,6 +25,7 @@ var wall_normal_values
 var player_model
 var skeleton
 var bone_idx
+var head_pitch_angle = 0.0
 
 # Creates a new bullet scene on call
 var bullet = load("res://scenes/bullet.tscn")
@@ -50,7 +51,7 @@ func _ready():
 	player_model.rotate_y(PI)
 	player_model.position.y -= 1
 	skeleton = player_model.get_node("Armature").get_node("Skeleton3D")
-	bone_idx = skeleton.find_bone("neck")
+	bone_idx = skeleton.find_bone("head")
 
 # Handles mouse focus
 func _unhandled_input(event):
@@ -73,10 +74,13 @@ func _unhandled_input(event):
 # https://www.reddit.com/r/godot/comments/17bhmaw/rotate_a_3d_bone_around_the_global_y_axis_using/
 
 			# Rotates the player model head
-			var rotation = Basis().rotated(Vector3.RIGHT, -event.relative.y * sensitivity)
+			head_pitch_angle += event.relative.y * sensitivity
+			head_pitch_angle = clamp(head_pitch_angle, deg_to_rad(-85), deg_to_rad(85))
+			var bone_rotation = Quaternion(Vector3(1, 0, 0), head_pitch_angle)
 			var current_transform = skeleton.get_bone_global_pose(bone_idx)
-			var new_transform = Transform3D(rotation, current_transform.origin)
+			var new_transform = Transform3D(bone_rotation, current_transform.origin)
 			skeleton.set_bone_global_pose_override(bone_idx, new_transform, 1, false)
+
 
 			# Limit to up and down rotation
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
@@ -132,8 +136,8 @@ func _physics_process(delta):
 				velocity.z += direction.z * 0.04
 
 				# Maximum velocity while falling
-				if velocity.length() > 20:
-					velocity = velocity.normalized() * 20
+				if velocity.length() > 12.5:
+					velocity = velocity.normalized() * 12.5
 
 	# Fires a bullet
 	if Input.is_action_pressed("shoot") and is_mouse_captured and !is_reloading:
@@ -191,7 +195,7 @@ func wall_run():
 
 		# Smoothly nullifies the vertical velocity if velocity.y is negative
 		if velocity.y < 0:
-			velocity.y += 0.075
+			velocity.y += 0.085
 
 		# Assigns velocity and flips depending on direction
 		if wall_direction == "left" and !wall_jump:
@@ -334,10 +338,10 @@ func sprint():
 	# Hold to run
 	if settings["controls"]["sprint mode"] == 0:
 		if Input.is_action_pressed("sprint"):
-			speed = 9
+			speed = 6.5
 			is_running = true
 		else:
-			speed = 4.5
+			speed = 3
 			is_running = false
 	# Toggle sprint
 	elif settings["controls"]["sprint mode"] == 1:
@@ -345,13 +349,13 @@ func sprint():
 		if Input.is_action_pressed("forward") or Input.is_action_pressed("backward") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 			if Input.is_action_just_pressed("sprint") and !is_running:
 				is_running = true
-				speed = 9
+				speed = 6.5
 			elif Input.is_action_just_pressed("sprint") and is_running:
 				is_running = false
-				speed = 4.5
+				speed = 3
 		else:
 			is_running = false
-			speed = 4.5
+			speed = 3
 
 func rotate_bone(bone_name, axis, value):
 	pass

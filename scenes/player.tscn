@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c34mnkfi2v3cn"]
+[gd_scene load_steps=22 format=3 uid="uid://c34mnkfi2v3cn"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jjlro"]
 [ext_resource type="PackedScene" uid="uid://ckibqhxqt8ish" path="res://scenes/rifle.tscn" id="2_5yvic"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLDU.gd" id="15_ctpdw"]
 [ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLUD.gd" id="15_ugk35"]
 [ext_resource type="Script" path="res://scripts/wallrunning_rays/CheckLDD.gd" id="16_lm711"]
+[ext_resource type="PackedScene" uid="uid://dpbpa3rcj3rm7" path="res://assets/models/player-model.glb" id="18_qvgq2"]
 [ext_resource type="PackedScene" uid="uid://cx0jp7l1mjrjr" path="res://scenes/hud.tscn" id="19_v3hb3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ibeww"]
@@ -35,7 +36,7 @@ shape = SubResource("CapsuleShape3D_ibeww")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32508, 0.283987, 0.617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291553, -0.147148)
 fov = 105.0
 
 [node name="AssaultRifle" parent="Neck/Camera3D" instance=ExtResource("2_5yvic")]
@@ -136,6 +137,9 @@ script = ExtResource("16_lm711")
 
 [node name="Reload" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="player-model" parent="." instance=ExtResource("18_qvgq2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
 [node name="HUD" parent="." instance=ExtResource("19_v3hb3")]
 

@@ -6,4 +6,5 @@
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/rotation = Quaternion(0.000474975, 0.000474975, 0.000474975, 1.00048)
+bones/22/rotation = Quaternion(0.279475, 0.000474975, 0.000474975, 0.960475)
 bones/23/rotation = Quaternion(0.000474975, 0.000474975, 0.000474975, 1.00048)
